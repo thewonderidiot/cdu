@@ -20,7 +20,8 @@ module coarse(
     input wire _DC11,
     input wire _DC12,
 
-    output wire _TLC1H
+    output wire _TLC1H,
+    output wire _ADHI
 );
 
 /*-----------------------------------------------------------------------------.
@@ -72,6 +73,12 @@ assign sum = s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + s10 + s11 + s12;
 | Schmitt Trigger                                                              |
 '-----------------------------------------------------------------------------*/
 assign _TLC1H = (sum >= (0.56*$sqrt(2)));
+
+/*-----------------------------------------------------------------------------.
+| Ambiguity Detect                                                             |
+'-----------------------------------------------------------------------------*/
+// FIXME: The trigger should be on 12.25Vpp. Find the missing scaling factor.
+assign _ADHI = (_CCOSH >= 21.09);
 
 endmodule
 `default_nettype wire

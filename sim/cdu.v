@@ -60,6 +60,7 @@ wire ATPF1;
 wire ATPF2;
 wire ATPC1;
 wire ATLC1H;
+wire AADHI;
 wire ATPS;
 
 // Wires without drivers
@@ -70,6 +71,7 @@ reg CCDUZ = 0;
 /*------------------------------------------------.
 | Modules                                         |
 '------------------------------------------------*/
+// Common modules
 mode x01(
     .rst_n(rst_n),
     .FAZ2DR(FAZ2DR),
@@ -113,29 +115,8 @@ interrogate x03(
     .ISSIHI(ISSIHI)
 );
 
-coarse x04(
-    .rst_n(rst_n),
-    ._CSINH(ACSINH),
-    ._CCOSH(ACCOSH),
-    ._28RFH(U28RFH),
-
-    ._DC1(ADC1),
-    ._DC2(ADC2),
-    ._DC3(ADC3),
-    ._DC4(ADC4),
-    ._DC5(ADC5),
-    ._DC6(ADC6),
-    ._DC7(ADC7),
-    ._DC8(ADC8),
-    ._DC9(ADC9),
-    ._DC10(ADC10),
-    ._DC11(ADC11),
-    ._DC12(ADC12),
-
-    ._TLC1H(ATLC1H)
-);
-
-error_angle x05(
+// Inner gimbal
+error_angle s14(
     .rst_n(rst_n),
     .FAZ2HI(FAZ2HI),
     ._REF1H(UREF1H),
@@ -155,5 +136,28 @@ error_angle x05(
     ._TPS(ATPS)
 );
     
+coarse s15(
+    .rst_n(rst_n),
+    ._CSINH(ACSINH),
+    ._CCOSH(ACCOSH),
+    ._28RFH(U28RFH),
+
+    ._DC1(ADC1),
+    ._DC2(ADC2),
+    ._DC3(ADC3),
+    ._DC4(ADC4),
+    ._DC5(ADC5),
+    ._DC6(ADC6),
+    ._DC7(ADC7),
+    ._DC8(ADC8),
+    ._DC9(ADC9),
+    ._DC10(ADC10),
+    ._DC11(ADC11),
+    ._DC12(ADC12),
+
+    ._TLC1H(ATLC1H),
+    ._ADHI(AADHI)
+);
 endmodule
+
 `default_nettype wire
