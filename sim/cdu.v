@@ -60,8 +60,11 @@ wire ATPF2;
 wire ATPC1;
 wire ATLC1H;
 wire ATPS;
+
+// Wires without drivers
 reg ATLF2H = 0;
 reg AAO = 0;
+reg CCDUZ = 0;
 
 /*------------------------------------------------.
 | Modules                                         |
@@ -86,6 +89,7 @@ digital_mode x02(
     .FAZ3HI(FAZ3HI),
     .FAZ4HI(FAZ4HI),
     .ISSIHI(ISSIHI),
+    .CCDUZ(CCDUZ),
 
     ._51KPHI_n(_51KPHI_n),
     .FAZ1HI(FAZ1HI),
