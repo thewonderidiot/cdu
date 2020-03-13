@@ -53,6 +53,7 @@ wire PS25KH;
 wire ISSIHI;
 wire ISSI2H;
 wire ISSI3H;
+wire _800LHI;
 wire AUPLVL;
 wire ADNLVL;
 wire ATPF1;
@@ -99,7 +100,8 @@ digital_mode x02(
     .FAZ4DR(FAZ4DR),
     .PS25KH(PS25KH),
     .ISSI2H(ISSI2H),
-    .ISSI3H(ISSI3H)
+    .ISSI3H(ISSI3H),
+    ._800LHI(_800LHI)
 );
 
 interrogate x03(

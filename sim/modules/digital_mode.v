@@ -19,7 +19,8 @@ module digital_mode(
     output wire FAZ4DR,
     output wire PS25KH,
     output wire ISSI2H,
-    output wire ISSI3H
+    output wire ISSI3H,
+    output wire _800LHI
 );
 
 /*-----------------------------------------------------------------------------.
@@ -59,6 +60,30 @@ wire n66740;
 wire n66741;
 wire n66742;
 wire n66743;
+wire n66744;
+wire n66745;
+wire n66746;
+wire n66747;
+wire n66748;
+wire n66749;
+wire n66750;
+wire n66751;
+wire n66752;
+wire n66753;
+wire n66754;
+wire n66755;
+wire n66756;
+wire n66757;
+wire n66758;
+wire n66759;
+wire n66760;
+wire n66761;
+wire n66762;
+wire n66763;
+wire n66764;
+wire n66765;
+wire n66766;
+wire n66767;
 
 wire n66816;
 wire n66817;
@@ -118,6 +143,31 @@ nor2      g66740(rst_n, n66738, FAZ4HI, n66740);
 nor2      g66741(rst_n, n66739, FAZ4HI, n66741);
 nor2 #(1) g66742(rst_n, n66740, n66743, n66742);
 nor2      g66743(rst_n, n66742, n66741, n66743);
+nor1      g66744(rst_n, n66740, n66744);
+nor2      g66745(rst_n, FAZ2HI, n66751, n66745);
+nor2      g66746(rst_n, n66745, n66747, n66746);
+nor2 #(1) g66747(rst_n, n66746, n66731, n66747);
+nor2      g66748(rst_n, n66744, n66746, n66748);
+nor2      g66749(rst_n, n66744, n66747, n66749);
+nor2      g66750(rst_n, n66748, n66751, n66750);
+nor2 #(1) g66751(rst_n, n66750, n66749, n66751);
+nor1      g66752(rst_n, n66748, n66752);
+nor2      g66753(rst_n, FAZ2HI, n66759, n66753);
+nor2 #(1) g66754(rst_n, n66753, n66755, n66754);
+nor2      g66755(rst_n, n66754, n66731, n66755);
+nor2      g66756(rst_n, n66752, n66754, n66756);
+nor2      g66757(rst_n, n66752, n66755, n66757);
+nor2 #(1) g66758(rst_n, n66756, n66759, n66758);
+nor2      g66759(rst_n, n66758, n66757, n66759);
+nor1      g66760(rst_n, n66756, n66760);
+nor2      g66761(rst_n, FAZ2HI, n66767, n66761);
+nor2      g66762(rst_n, n66761, n66763, n66762);
+nor2 #(1) g66763(rst_n, n66762, n66731, n66763);
+nor2      g66764(rst_n, n66760, n66762, n66764);
+nor2      g66765(rst_n, n66760, n66763, n66765);
+nor2      g66766(rst_n, n66764, n66767, n66766);
+nor2 #(1) g66767(rst_n, n66766, n66765, n66767);
+nor1      g66768(rst_n, n66764, _800LHI);
 
 nor2 #(1) g66816(rst_n, ISSIHI, n66817, n66816);
 nor2      g66817(rst_n, n66816, n66821, n66817);
