@@ -62,11 +62,16 @@ wire ATPC1;
 wire ATLC1H;
 wire AADHI;
 wire ATPS;
+wire AAO;
+wire AQ;
 
 // Wires without drivers
 reg ATLF2H = 0;
-reg AAO = 0;
+reg ARSETB = 0;
+reg ACDUZ = 0;
+reg BCDUZ = 0;
 reg CCDUZ = 0;
+reg DMMCA = 0;
 
 /*------------------------------------------------.
 | Modules                                         |
@@ -91,8 +96,8 @@ digital_mode x02(
     .FAZ2HI_n(FAZ2HI_n),
     .FAZ3HI(FAZ3HI),
     .FAZ4HI(FAZ4HI),
+    .UREF1H(UREF1H),
     .ISSIHI(ISSIHI),
-    .CCDUZ(CCDUZ),
 
     ._51KPHI_n(_51KPHI_n),
     .FAZ1HI(FAZ1HI),
@@ -103,7 +108,18 @@ digital_mode x02(
     .PS25KH(PS25KH),
     .ISSI2H(ISSI2H),
     .ISSI3H(ISSI3H),
-    ._800LHI(_800LHI)
+    ._800LHI(_800LHI),
+
+    .AADHI(AADHI),
+    .ARSETB(ARSETB),
+    .AAO(AAO),
+    .AQ(AQ),
+
+    .BCDUZ(BCDUZ),
+
+    .CCDUZ(CCDUZ),
+
+    .DMMCA(DMMCA)
 );
 
 interrogate x03(
@@ -135,7 +151,7 @@ error_angle s14(
     ._TPC1(ATPC1),
     ._TPS(ATPS)
 );
-    
+
 coarse s15(
     .rst_n(rst_n),
     ._CSINH(ACSINH),
