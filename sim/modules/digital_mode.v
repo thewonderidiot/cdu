@@ -22,17 +22,28 @@ module digital_mode(
     output wire ISSI3H,
     output wire _800LHI,
 
+    input wire ISSCA,
+    input wire ISSZ,
+    input wire ISSEEC,
+
+    output wire ISSZDR,
+    output wire DMMCA,
+    output wire UINHRC,
+
     input wire AADHI,
     input wire ARSETB,
     output wire AAO,
     output wire AQ,
+    output wire ACA,
+    output wire AEEC,
 
     input wire BCDUZ,
+    output wire BCA,
+    output wire BEEC,
 
     input wire CCDUZ,
-
-    input wire DMMCA
-
+    output wire CCA,
+    output wire CEEC
 );
 
 /*-----------------------------------------------------------------------------.
@@ -96,7 +107,22 @@ wire n66764;
 wire n66765;
 wire n66766;
 wire n66767;
+wire n66769;
+wire n66770;
+wire n66771;
+wire n66772;
+wire n66773;
+wire n66777;
+wire n66778;
+wire n66779;
+wire n66780;
+wire n66781;
+wire n66782;
+wire n66783;
 
+wire n66801;
+wire n66802;
+wire n66804;
 wire n66815;
 wire n66816;
 wire n66817;
@@ -192,7 +218,37 @@ nor2      g66765(rst_n, n66760, n66763, n66765);
 nor2      g66766(rst_n, n66764, n66767, n66766);
 nor2 #(1) g66767(rst_n, n66766, n66765, n66767);
 nor1      g66768(rst_n, n66764, _800LHI);
+nor1      g66769(rst_n, ISSCA, n66769);
+nor2      g66770(rst_n, FAZ2HI, n66769, n66770);
+nor2 #(1) g66771(rst_n, FAZ2HI, ISSCA, n66771);
+nor2      g66772(rst_n, n66770, n66773, n66772);
+nor2 #(1) g66773(rst_n, n66772, n66771, n66773);
+nor1      g66774(rst_n, n66773, ACA);
+nor1      g66775(rst_n, n66773, BCA);
+nor1      g66776(rst_n, n66773, CCA);
+nor2      g66777(rst_n, FAZ2HI, ISSZ, n66777);
+nor2      g66778(rst_n, n66777, n66779, n66778);
+nor2 #(1) g66779(rst_n, n66778, ISSZ, n66779);
+nor1      g66780(rst_n, ISSEEC, n66780);
+nor2      g66781(rst_n, FAZ2HI, n66780, n66781);
+nor2      g66782(rst_n, n66781, n66783, n66782);
+nor2 #(1) g66783(rst_n, n66782, n66780, n66783);
 
+nor1      g66800(rst_n, n66773, DMMCA);
+nor2      g66801(rst_n, DMMCA, n66783, n66801);
+nor2      g66802(rst_n, n66778, n66801, n66802);
+nor1      g66803(rst_n, n66802, UINHRC);
+nor1      g66804(rst_n, n66782, n66804);
+//nor1    g66805(rst_n, n66782, n66804);
+nor1      g66806(rst_n, n66804, CEEC);
+nor1      g66807(rst_n, n66804, BEEC);
+nor1      g66808(rst_n, n66804, AEEC);
+//nor1    g66809(rst_n, n66804, CEEC);
+//nor1    g66810(rst_n, n66804, BEEC);
+//nor1    g66811(rst_n, n66804, AEEC);
+//nor1    g66812(rst_n, n66804, CEEC);
+//nor1    g66813(rst_n, n66804, BEEC);
+//nor1    g66814(rst_n, n66804, AEEC);
 nor1      g66815(rst_n, ISSIHI, n66815);
 nor2 #(1) g66816(rst_n, ISSIHI, n66817, n66816);
 nor2      g66817(rst_n, n66816, n66821, n66817);
@@ -224,6 +280,7 @@ nor3      g66882(rst_n, DMMCA, n66879, n66851, AQ);
 nor2      g66913(rst_n, n66700, n66922, _51KPHI_n);
 nor1      g66914(rst_n, n66722, n66914);
 nor1      g66915(rst_n, n66914, FAZ2DR);
+nor1      g66916(rst_n, n66778, ISSZDR);
 nor1      g66922(rst_n, CCDUZ, n66922);
 
 endmodule

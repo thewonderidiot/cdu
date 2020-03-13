@@ -53,6 +53,11 @@ wire real ACCOSH;
 assign ACSINH = (26/28.0)*$sin(shaft_angle)*U28RFH;
 assign ACCOSH = (26/28.0)*$cos(shaft_angle)*U28RFH;
 
+// AGC moding inputs
+reg AGCCA = 1;
+reg AGCZ = 1;
+reg AGCEEC = 1;
+
 /*-----------------------------------------------------------------------------.
 | CDU                                                                          |
 '-----------------------------------------------------------------------------*/
@@ -74,6 +79,10 @@ cdu cdu(
 
     .CLOCKH(CLOCKH),
     .U28RFH(U28RFH),
+
+    .AGCCA(AGCCA),
+    .AGCZ(AGCZ),
+    .AGCEEC(AGCEEC),
 
     .ACSINH(ACSINH),
     .ACCOSH(ACCOSH)
@@ -98,13 +107,23 @@ initial begin
     ADC11 = 0;
     ADC12 = 0;
     #1000 rst_n = 1'b1;
-    ADC1 = 1;
+    ADC3 = 1;
     ADC5 = 1;
-    #100000000;
-    ADC1 = 0;
+    ADC9 = 1;
+    #10000000;
+    ADC9 = 0;
+    #10000000;
+    ADC3 = 0;
     ADC5 = 0;
     ADC4 = 1;
     ADC6 = 1;
+    ADC9 = 1;
+    #10000000;
+    ADC9 = 0;
+    #10000000;
+    ADC4 = 0;
+    ADC2 = 1;
+    ADC9 = 1;
 
     #2000000000 $finish;
 end

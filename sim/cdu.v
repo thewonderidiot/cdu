@@ -20,6 +20,11 @@ module cdu(
 
     input wire CLOCKH,
     input wire real U28RFH,
+
+    input wire AGCCA,
+    input wire AGCZ,
+    input wire AGCEEC,
+
     input wire real ACSINH,
     input wire real ACCOSH
 );
@@ -54,6 +59,15 @@ wire ISSIHI;
 wire ISSI2H;
 wire ISSI3H;
 wire _800LHI;
+wire ISSCA;
+wire ISSZ;
+wire ISSEEC;
+wire ISSZDR;
+wire DMMCA;
+wire UINHRC;
+wire ACDUZ;
+wire BCDUZ;
+wire CCDUZ;
 wire AUPLVL;
 wire ADNLVL;
 wire ATPF1;
@@ -64,14 +78,16 @@ wire AADHI;
 wire ATPS;
 wire AAO;
 wire AQ;
+wire ACA;
+wire AEEC;
+wire BCA;
+wire BEEC;
+wire CCA;
+wire CEEC;
 
 // Wires without drivers
 reg ATLF2H = 0;
 reg ARSETB = 0;
-reg ACDUZ = 0;
-reg BCDUZ = 0;
-reg CCDUZ = 0;
-reg DMMCA = 0;
 
 /*------------------------------------------------.
 | Modules                                         |
@@ -83,10 +99,23 @@ mode x01(
     .FAZ2DR_n(FAZ2DR_n),
     .FAZ3DR(FAZ3DR),
     .FAZ4DR(FAZ4DR),
+
+    .AGCCA(AGCCA),
+    .AGCZ(AGCZ),
+    .AGCEEC(AGCEEC),
+    .ISSZDR(ISSZDR),
+
     .FAZ2HI(FAZ2HI),
     .FAZ2HI_n(FAZ2HI_n),
     .FAZ3HI(FAZ3HI),
-    .FAZ4HI(FAZ4HI)
+    .FAZ4HI(FAZ4HI),
+
+    .ISSCA(ISSCA),
+    .ISSZ(ISSZ),
+    .ISSEEC(ISSEEC),
+    .ACDUZ(ACDUZ),
+    .BCDUZ(BCDUZ),
+    .CCDUZ(CCDUZ)
 );
 
 digital_mode x02(
@@ -110,16 +139,28 @@ digital_mode x02(
     .ISSI3H(ISSI3H),
     ._800LHI(_800LHI),
 
+    .ISSCA(ISSCA),
+    .ISSZ(ISSZ),
+    .ISSEEC(ISSEEC),
+
+    .ISSZDR(ISSZDR),
+    .DMMCA(DMMCA),
+    .UINHRC(UINHRC),
+
     .AADHI(AADHI),
     .ARSETB(ARSETB),
     .AAO(AAO),
     .AQ(AQ),
+    .ACA(ACA),
+    .AEEC(AEEC),
 
     .BCDUZ(BCDUZ),
+    .BCA(BCA),
+    .BEEC(BEEC),
 
     .CCDUZ(CCDUZ),
-
-    .DMMCA(DMMCA)
+    .CCA(CCA),
+    .CEEC(CEEC)
 );
 
 interrogate x03(
