@@ -8,6 +8,7 @@
 *.kicad_pcb-bak
 *.sch-bak
 *~
+*.swp
 _autosave-*
 *.tmp
 *-save.pro
@@ -24,3 +25,9 @@ fp-info-cache
 # Exported BOM files
 *.xml
 *.csv
+
+# Build products
+cdu_sim
+
+# Simulation outputs
+*.fst
