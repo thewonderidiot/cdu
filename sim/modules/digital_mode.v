@@ -17,6 +17,7 @@ module digital_mode(
     output wire FAZ2DR_n,
     output wire FAZ3DR,
     output wire FAZ4DR,
+    output wire FAZ4CA,
     output wire PS25KH,
     output wire ISSI2H,
     output wire ISSI3H,
@@ -144,6 +145,8 @@ wire n66879;
 wire n66880;
 
 wire n66914;
+wire n66919;
+wire n66920;
 wire n66922;
 
 /*-----------------------------------------------------------------------------.
@@ -281,6 +284,10 @@ nor2      g66913(rst_n, n66700, n66922, _51KPHI_n);
 nor1      g66914(rst_n, n66722, n66914);
 nor1      g66915(rst_n, n66914, FAZ2DR);
 nor1      g66916(rst_n, n66778, ISSZDR);
+
+nor1      g66919(rst_n, DMMCA, n66919);
+nor2      g66920(rst_n, n66919, FAZ4HI, n66920);
+nor2      g66921(rst_n, n66920, n66740, FAZ4CA);
 nor1      g66922(rst_n, CCDUZ, n66922);
 
 endmodule

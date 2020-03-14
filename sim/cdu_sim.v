@@ -68,6 +68,7 @@ wire ATPF2;
 wire ATPS;
 wire ATPUG;
 wire ATPAD;
+wire ATPPI;
 
 /*-----------------------------------------------------------------------------.
 | CDU                                                                          |
@@ -104,7 +105,8 @@ cdu cdu(
     .ATPF2(ATPF2),
     .ATPS(ATPS),
     .ATPUG(ATPUG),
-    .ATPAD(ATPAD)
+    .ATPAD(ATPAD),
+    .ATPPI(ATPPI)
 );
 
 /*-----------------------------------------------------------------------------.
@@ -139,6 +141,10 @@ initial begin
     ADC9 = 1;
     #10000000;
     ADC9 = 0;
+    #1000000;
+    fine1_en = 1;
+    #1000000;
+    fine1_en = 0;
     #10000000;
     ADC4 = 0;
     ADC2 = 1;

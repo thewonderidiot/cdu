@@ -35,7 +35,8 @@ module cdu(
     output wire ATPF2,
     output wire ATPS,
     output wire ATPUG,
-    output wire ATPAD
+    output wire ATPAD,
+    output wire ATPPI
 );
 
 /*------------------------------------------------.
@@ -63,6 +64,7 @@ wire FAZ2HI;
 wire FAZ2HI_n;
 wire FAZ3HI;
 wire FAZ4HI;
+wire FAZ4CA;
 wire PS25KH;
 wire ISSIHI;
 wire ISSI2H;
@@ -81,6 +83,7 @@ wire AUPLVL;
 wire ADNLVL;
 wire ATLC1H;
 wire AADHI;
+wire APIHI;
 wire AAO;
 wire AQ;
 wire ACA;
@@ -142,6 +145,7 @@ digital_mode x02(
     .FAZ2DR_n(FAZ2DR_n),
     .FAZ3DR(FAZ3DR),
     .FAZ4DR(FAZ4DR),
+    .FAZ4CA(FAZ4CA),
     .PS25KH(PS25KH),
     .ISSI2H(ISSI2H),
     .ISSI3H(ISSI3H),
@@ -183,11 +187,16 @@ interrogate x03(
 // Inner gimbal
 error_angle s14(
     .rst_n(rst_n),
+    .FAZ1HI(FAZ1HI),
     .FAZ2HI(FAZ2HI),
+    .FAZ2HI_n(FAZ2HI_n),
+    .FAZ4CA(FAZ4CA),
     ._REF1H(UREF1H),
     .___IHI(ISSIHI),
     .___I2H(ISSI2H),
     .___I3H(ISSI3H),
+    ._800LHI(_800LHI),
+    ._INHRC(UINHRC),
     ._AO(AAO),
     ._TLC1H(ATLC1H),
     ._TLF1H(ATLF1H),
@@ -200,13 +209,15 @@ error_angle s14(
     ._DNLVL(ADNLVL),
     ._mPGH(AmPGH),
     ._pPGH(ApPGH),
+    ._PIHI(APIHI),
 
     ._TPF1(ATPF1),
     ._TPF2(ATPF2),
     ._TPC1(ATPC1),
     ._TPS(ATPS),
     ._TPAD(ATPAD),
-    ._TPUG(ATPUG)
+    ._TPUG(ATPUG),
+    ._TPPI(ATPPI)
 );
 
 coarse s15(
