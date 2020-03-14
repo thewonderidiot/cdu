@@ -26,7 +26,16 @@ module cdu(
     input wire AGCEEC,
 
     input wire real ACSINH,
-    input wire real ACCOSH
+    input wire real ACCOSH,
+
+    // Test points
+    output wire real ATPCA,
+    output wire ATPC1,
+    output wire ATPF1,
+    output wire ATPF2,
+    output wire ATPS,
+    output wire ATPUG,
+    output wire ATPAD
 );
 
 /*------------------------------------------------.
@@ -70,16 +79,14 @@ wire BCDUZ;
 wire CCDUZ;
 wire AUPLVL;
 wire ADNLVL;
-wire ATPF1;
-wire ATPF2;
-wire ATPC1;
 wire ATLC1H;
 wire AADHI;
-wire ATPS;
 wire AAO;
 wire AQ;
 wire ACA;
 wire AEEC;
+wire AmPGH;
+wire ApPGH;
 wire BCA;
 wire BEEC;
 wire CCA;
@@ -88,6 +95,7 @@ wire CEEC;
 // Wires without drivers
 reg ATLF2H = 0;
 reg ARSETB = 0;
+reg ADEL0H = 0;
 
 /*------------------------------------------------.
 | Modules                                         |
@@ -184,13 +192,21 @@ error_angle s14(
     ._TLC1H(ATLC1H),
     ._TLF1H(ATLF1H),
     ._TLF2H(ATLF2H),
+    ._ADHI(AADHI),
+
+    ._DEL0H(ADEL0H),
 
     ._UPLVL(AUPLVL),
     ._DNLVL(ADNLVL),
+    ._mPGH(AmPGH),
+    ._pPGH(ApPGH),
+
     ._TPF1(ATPF1),
     ._TPF2(ATPF2),
     ._TPC1(ATPC1),
-    ._TPS(ATPS)
+    ._TPS(ATPS),
+    ._TPAD(ATPAD),
+    ._TPUG(ATPUG)
 );
 
 coarse s15(
@@ -213,7 +229,9 @@ coarse s15(
     ._DC12(ADC12),
 
     ._TLC1H(ATLC1H),
-    ._ADHI(AADHI)
+    ._ADHI(AADHI),
+
+    ._TPCA(ATPCA)
 );
 endmodule
 

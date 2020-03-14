@@ -21,7 +21,9 @@ module coarse(
     input wire _DC12,
 
     output wire _TLC1H,
-    output wire _ADHI
+    output wire _ADHI,
+
+    output wire real _TPCA
 );
 
 /*-----------------------------------------------------------------------------.
@@ -68,6 +70,7 @@ assign s12 = _DC12 ?  ref_4vrms * (25e3 / 100e3) * (2.0e3/(8.0e3 + 2.0e3)): 0.0;
 '-----------------------------------------------------------------------------*/
 wire real sum;
 assign sum = s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + s10 + s11 + s12;
+assign _TPCA = sum;
 
 /*-----------------------------------------------------------------------------.
 | Schmitt Trigger                                                              |
