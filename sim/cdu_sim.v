@@ -8,9 +8,11 @@ module cdu_sim;
 | Simulation stuff                                                             |
 '-----------------------------------------------------------------------------*/
 reg rst_n = 0;
-reg fine1_en = 0;
+reg fine1_en = 1;
 
-reg real shaft_angle = 1.9198621771937625;
+reg real shaft_angle = 4.72984227;
+reg real atca_phase = 1.5;
+reg lgc = 1;
 
 /*-----------------------------------------------------------------------------.
 | External inputs                                                              |
@@ -27,18 +29,23 @@ end
 
 // 28Vrms 800~ 1% ISS reference
 reg real U28RFH;
+reg real atca_ref;
 initial begin
     U28RFH = 0.1;
+    atca_ref = 0.1;
 end
 always begin
     #2500 U28RFH = 28*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9));
+    atca_ref = 15*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9) - atca_phase);
 end
 
 // 1X resolver sin/cos outputs
 wire real ACSINH;
 wire real ACCOSH;
-assign ACSINH = (26/28.0)*$sin(shaft_angle)*U28RFH;
-assign ACCOSH = (26/28.0)*$cos(shaft_angle)*U28RFH;
+wire real resolver_ref;
+assign resolver_ref = lgc ? U28RFH : atca_ref;
+assign ACSINH = (26/28.0)*$sin(shaft_angle)*resolver_ref;
+assign ACCOSH = (26/28.0)*$cos(shaft_angle)*resolver_ref;
 
 // AGC moding inputs
 reg AGCCA = 1;
@@ -94,6 +101,7 @@ initial begin
     #1000 rst_n = 1'b1;
     #5000000;
     AGCZ = 1;
+    #1200000000 lgc = 0;
     #5000000000 $finish;
 end
 
