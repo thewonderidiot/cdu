@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Sat Mar 14 00:45:48 2020
+[*]
+[dumpfile] "/home/mike/agc/cdu/sim/dump.fst"
+[dumpfile_mtime] "Sat Mar 14 00:41:09 2020"
+[dumpfile_size] 35425848
+[savefile] "/home/mike/agc/cdu/sim/cdu.gtkw"
+[timestart] 0
+[size] 1865 1025
+[pos] 0 266
+*-33.000000 26566000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] cdu_sim.
+[treeopen] cdu_sim.cdu.
+[sst_width] 223
+[signals_width] 227
+[sst_expanded] 1
+[sst_vpaned_height] 311
+@90022
+cdu_sim.cdu.U28RFH
+@20000
+-
+@90022
+[color] 1
+cdu_sim.cdu.ACSINH
+@20000
+-
+@90022
+[color] 3
+cdu_sim.cdu.ACCOSH
+@20000
+-
+@90022
+[color] 5
+cdu_sim.cdu.s15.sum
+@20000
+-
+@28
+cdu_sim.ATPC1
+cdu_sim.ATPS
+cdu_sim.ATPUG
+cdu_sim.ATPAD
+[pattern_trace] 1
+[pattern_trace] 0
