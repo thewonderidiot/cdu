@@ -3,6 +3,7 @@ MODULES = interrogate\
 	  digital_mode\
 	  error_angle\
 	  coarse\
+	  read_counter\
 
 
 COMPONENTS = nor1\

@@ -52,18 +52,18 @@ wire real s10;
 wire real s11;
 wire real s12;
 
-assign s1  = _DC1  ? -sin_4vrms * (25e3 /  27.06e3) : 0.0;
-assign s2  = _DC2  ? -sin_4vrms * (25e3 /  65.33e3) : 0.0;
-assign s3  = _DC3  ?  sin_4vrms * (25e3 /  27.06e3) : 0.0;
-assign s4  = _DC4  ?  sin_4vrms * (25e3 /  65.33e3) : 0.0;
-assign s5  = _DC5  ? -cos_4vrms * (25e3 /  65.33e3) : 0.0;
-assign s6  = _DC6  ? -cos_4vrms * (25e3 /  27.06e3) : 0.0;
-assign s7  = _DC7  ?  cos_4vrms * (25e3 /  65.33e3) : 0.0;
-assign s8  = _DC8  ?  cos_4vrms * (25e3 /  27.06e3) : 0.0;
-assign s9  = _DC9  ?  ref_4vrms * (25e3 /  65.33e3) : 0.0;
-assign s10 = _DC10 ?  ref_4vrms * (25e3 / 128.15e3) : 0.0;
-assign s11 = _DC11 ?  ref_4vrms * (25e3 / 100e3) * (2.6e3/(4.0e3 + 2.6e3)): 0.0;
-assign s12 = _DC12 ?  ref_4vrms * (25e3 / 100e3) * (2.0e3/(8.0e3 + 2.0e3)): 0.0;
+assign s1  = _DC1  ? 0.0 : -sin_4vrms * (25e3 /  27.06e3);
+assign s2  = _DC2  ? 0.0 : -sin_4vrms * (25e3 /  65.33e3);
+assign s3  = _DC3  ? 0.0 :  sin_4vrms * (25e3 /  27.06e3);
+assign s4  = _DC4  ? 0.0 :  sin_4vrms * (25e3 /  65.33e3);
+assign s5  = _DC5  ? 0.0 : -cos_4vrms * (25e3 /  65.33e3);
+assign s6  = _DC6  ? 0.0 : -cos_4vrms * (25e3 /  27.06e3);
+assign s7  = _DC7  ? 0.0 :  cos_4vrms * (25e3 /  65.33e3);
+assign s8  = _DC8  ? 0.0 :  cos_4vrms * (25e3 /  27.06e3);
+assign s9  = _DC9  ? 0.0 :  ref_4vrms * (25e3 /  65.33e3);
+assign s10 = _DC10 ? 0.0 : -ref_4vrms * (25e3 / 128.15e3);
+assign s11 = _DC11 ? 0.0 : -ref_4vrms * (25e3 / 100e3) * (2.6e3/(4.0e3 + 2.6e3));
+assign s12 = _DC12 ? 0.0 : -ref_4vrms * (25e3 / 100e3) * (2.0e3/(8.0e3 + 2.0e3));
 
 /*-----------------------------------------------------------------------------.
 | Summing amplifier                                                            |
@@ -75,7 +75,7 @@ assign _TPCA = sum;
 /*-----------------------------------------------------------------------------.
 | Schmitt Trigger                                                              |
 '-----------------------------------------------------------------------------*/
-assign _TLC1H = (sum >= (0.56*$sqrt(2)));
+assign _TLC1H = ~(sum >= (0.56*$sqrt(2)));
 
 /*-----------------------------------------------------------------------------.
 | Ambiguity Detect                                                             |

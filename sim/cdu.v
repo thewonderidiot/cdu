@@ -5,19 +5,6 @@ module cdu(
     input wire rst_n,
     input wire fine1_en,
 
-    input wire ADC1,
-    input wire ADC2,
-    input wire ADC3,
-    input wire ADC4,
-    input wire ADC5,
-    input wire ADC6,
-    input wire ADC7,
-    input wire ADC8,
-    input wire ADC9,
-    input wire ADC10,
-    input wire ADC11,
-    input wire ADC12,
-
     input wire CLOCKH,
     input wire real U28RFH,
 
@@ -90,6 +77,20 @@ wire ACA;
 wire AEEC;
 wire AmPGH;
 wire ApPGH;
+wire ARSETB;
+wire ADEL0H;
+wire ADC1;
+wire ADC2;
+wire ADC3;
+wire ADC4;
+wire ADC5;
+wire ADC6;
+wire ADC7;
+wire ADC8;
+wire ADC9;
+wire ADC10;
+wire ADC11;
+wire ADC12;
 wire BCA;
 wire BEEC;
 wire CCA;
@@ -97,8 +98,6 @@ wire CEEC;
 
 // Wires without drivers
 reg ATLF2H = 0;
-reg ARSETB = 0;
-reg ADEL0H = 0;
 
 /*------------------------------------------------.
 | Modules                                         |
@@ -244,6 +243,32 @@ coarse s15(
 
     ._TPCA(ATPCA)
 );
-endmodule
 
+read_counter s16(
+    .rst_n(rst_n),
+    .FAZ2HI_n(FAZ2HI_n),
+    .FAZ3HI(FAZ3HI),
+    ._CDUZ(ACDUZ),
+    ._Q(AQ),
+    ._UPLVL(AUPLVL),
+    ._DNLVL(ADNLVL),
+    ._PIHI(APIHI),
+
+    ._RSETB(ARSETB),
+    ._DEL0H(ADEL0H),
+    ._DC1(ADC1),
+    ._DC2(ADC2),
+    ._DC3(ADC3),
+    ._DC4(ADC4),
+    ._DC5(ADC5),
+    ._DC6(ADC6),
+    ._DC7(ADC7),
+    ._DC8(ADC8),
+    ._DC9(ADC9),
+    ._DC10(ADC10),
+    ._DC11(ADC11),
+    ._DC12(ADC12)
+);
+
+endmodule
 `default_nettype wire
