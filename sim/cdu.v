@@ -14,6 +14,11 @@ module cdu(
 
     input wire real ACSINH,
     input wire real ACCOSH,
+    input wire real AFSINH,
+    input wire real AFCOSH,
+
+    output wire ATpPGH,
+    output wire ATmPGH,
 
     // Test points
     output wire real ATPCA,
@@ -32,8 +37,8 @@ module cdu(
 reg ATLF1H = 0;
 
 always begin
-    #625000 ATLF1H = 0;
     #625000 ATLF1H = fine1_en;
+    #625000 ATLF1H = 0;
 end
 
 /*------------------------------------------------.
@@ -79,6 +84,7 @@ wire AmPGH;
 wire ApPGH;
 wire ARSETB;
 wire ADEL0H;
+wire ADEL2H;
 wire ADC1;
 wire ADC2;
 wire ADC3;
@@ -91,6 +97,27 @@ wire ADC9;
 wire ADC10;
 wire ADC11;
 wire ADC12;
+wire AD1;
+wire AD2;
+wire AD3;
+wire AD4;
+wire AD5;
+wire AD6;
+wire AD7;
+wire AD8;
+wire AD9;
+wire AD10;
+wire AD11;
+wire AD12;
+wire AD13;
+wire AD14;
+wire AD15;
+wire AD16;
+wire AD17;
+wire AD18;
+wire AD19;
+wire AD20;
+wire AD21;
 wire BCA;
 wire BEEC;
 wire CCA;
@@ -184,6 +211,16 @@ interrogate x03(
 );
 
 // Inner gimbal
+da_converter s13(
+    .rst_n(rst_n),
+
+    .ApPGH(ApPGH),
+    .AmPGH(AmPGH),
+
+    .ATpPGH(ATpPGH),
+    .ATmPGH(ATmPGH)
+);
+
 error_angle s14(
     .rst_n(rst_n),
     .FAZ1HI(FAZ1HI),
@@ -256,6 +293,8 @@ read_counter s16(
 
     ._RSETB(ARSETB),
     ._DEL0H(ADEL0H),
+    ._DEL2H(ADEL2H),
+
     ._DC1(ADC1),
     ._DC2(ADC2),
     ._DC3(ADC3),
@@ -267,7 +306,40 @@ read_counter s16(
     ._DC9(ADC9),
     ._DC10(ADC10),
     ._DC11(ADC11),
-    ._DC12(ADC12)
+    ._DC12(ADC12),
+
+    ._D1(AD1),
+    ._D2(AD2),
+    ._D3(AD3),
+    ._D4(AD4),
+    ._D5(AD5),
+    ._D6(AD6),
+    ._D7(AD7),
+    ._D8(AD8),
+    ._D9(AD9),
+    ._D10(AD10),
+    ._D11(AD11),
+    ._D12(AD12),
+    ._D13(AD13),
+    ._D14(AD14),
+    ._D15(AD15),
+    ._D16(AD16),
+    ._D17(AD17),
+    ._D18(AD18),
+    ._D19(AD19),
+    ._D20(AD20),
+    ._D21(AD21)
+);
+
+quadrant_selector s17(
+    .rst_n(rst_n),
+    ._FSINH(AFSINH),
+    ._FCOSH(AFCOSH),
+    
+    ._D5(AD5),
+    ._D6(AD6),
+    ._D7(AD7),
+    ._D8(AD8)
 );
 
 endmodule

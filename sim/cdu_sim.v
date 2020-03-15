@@ -10,7 +10,7 @@ module cdu_sim;
 reg rst_n = 0;
 reg fine1_en = 1;
 
-reg real shaft_angle = 4.72984227;
+reg real shaft_angle = 1.178097;
 reg real atca_phase = 1.5;
 reg lgc = 1;
 
@@ -42,15 +42,28 @@ end
 // 1X resolver sin/cos outputs
 wire real ACSINH;
 wire real ACCOSH;
+wire real AFSINH;
+wire real AFCOSH;
+
 wire real resolver_ref;
 assign resolver_ref = lgc ? U28RFH : atca_ref;
+
 assign ACSINH = (26/28.0)*$sin(shaft_angle)*resolver_ref;
 assign ACCOSH = (26/28.0)*$cos(shaft_angle)*resolver_ref;
+
+assign AFSINH = (5/28.0)*$sin(16*shaft_angle)*resolver_ref;
+assign AFCOSH = (5/28.0)*$cos(16*shaft_angle)*resolver_ref;
 
 // AGC moding inputs
 reg AGCCA = 1;
 reg AGCZ = 1;
 reg AGCEEC = 1;
+
+/*-----------------------------------------------------------------------------.
+| CDU outputs                                                                  |
+'-----------------------------------------------------------------------------*/
+wire ATpPGH;
+wire ATmPGH;
 
 /*-----------------------------------------------------------------------------.
 | Test points                                                                  |
@@ -80,6 +93,11 @@ cdu cdu(
 
     .ACSINH(ACSINH),
     .ACCOSH(ACCOSH),
+    .AFSINH(AFSINH),
+    .AFCOSH(AFCOSH),
+
+    .ATpPGH(ATpPGH),
+    .ATmPGH(ATmPGH),
 
     .ATPCA(ATPCA),
     .ATPC1(ATPC1),
@@ -101,7 +119,7 @@ initial begin
     #1000 rst_n = 1'b1;
     #5000000;
     AGCZ = 1;
-    #1200000000 lgc = 0;
+    //#1200000000 lgc = 0;
     #5000000000 $finish;
 end
 

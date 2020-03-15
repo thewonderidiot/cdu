@@ -14,6 +14,8 @@ module read_counter(
 
     output wire _RSETB,
     output wire _DEL0H,
+    output wire _DEL2H,
+
     output wire _DC1,
     output wire _DC2,
     output wire _DC3,
@@ -25,7 +27,29 @@ module read_counter(
     output wire _DC9,
     output wire _DC10,
     output wire _DC11,
-    output wire _DC12
+    output wire _DC12,
+
+    output wire _D1,
+    output wire _D2,
+    output wire _D3,
+    output wire _D4,
+    output wire _D5,
+    output wire _D6,
+    output wire _D7,
+    output wire _D8,
+    output wire _D9,
+    output wire _D10,
+    output wire _D11,
+    output wire _D12,
+    output wire _D13,
+    output wire _D14,
+    output wire _D15,
+    output wire _D16,
+    output wire _D17,
+    output wire _D18,
+    output wire _D19,
+    output wire _D20,
+    output wire _D21
 );
 
 /*-----------------------------------------------------------------------------.
@@ -116,7 +140,6 @@ wire n6_474;
 wire n6_475;
 wire n6_476;
 wire n6_477;
-wire n6_478;
 wire n6_479;
 
 wire n6_480;
@@ -160,7 +183,6 @@ wire n6_514;
 wire n6_515;
 wire n6_516;
 wire n6_517;
-wire n6_518;
 wire n6_519;
 
 wire n6_520;
@@ -204,6 +226,25 @@ wire n6_554;
 wire n6_555;
 wire n6_556;
 
+wire n6_582;
+wire n6_583;
+wire n6_584;
+wire n6_587;
+wire n6_588;
+wire n6_590;
+wire n6_592;
+wire n6_594;
+wire n6_596;
+wire n6_598;
+wire n6_600;
+wire n6_602;
+wire n6_603;
+wire n6_605;
+wire n6_606;
+wire n6_608;
+wire n6_609;
+wire n6_611;
+
 wire n6_612;
 wire n6_615;
 wire n6_617;
@@ -218,6 +259,14 @@ wire _XP14;
 wire _XP14_n;
 wire _XP15;
 wire _XP15_n;
+
+wire _FLA;
+wire _FLB;
+wire _FLC;
+wire _FLD;
+wire _FLE;
+wire _FLF;
+wire _FLG;
 
 /*-----------------------------------------------------------------------------.
 | Gates                                                                        |
@@ -314,8 +363,8 @@ nor3      g6_473(rst_n, _DNLVL, n6_471, n6_469, n6_473);
 nor2      g6_474(rst_n, n6_471, n6_469, n6_474);
 nor2      g6_475(rst_n, n6_469, n6_472, n6_475);
 nor3      g6_476(rst_n, n6_469, n6_472, _UPLVL, n6_476);
-nor2 #(1) g6_477(rst_n, n6_474, n6_478, n6_477);
-nor3      g6_478(rst_n, n6_477, n6_475, _CDUZ, n6_478);
+nor2 #(1) g6_477(rst_n, n6_474, _FLA, n6_477);
+nor3      g6_478(rst_n, n6_477, n6_475, _CDUZ, _FLA);
 nor2      g6_479(rst_n, n6_473, n6_476, n6_479);
 
 // Bit 8
@@ -362,8 +411,8 @@ nor3      g6_513(rst_n, _DNLVL, n6_511, n6_509, n6_513);
 nor2      g6_514(rst_n, n6_511, n6_509, n6_514);
 nor2      g6_515(rst_n, n6_509, n6_512, n6_515);
 nor3      g6_516(rst_n, n6_509, n6_512, _UPLVL, n6_516);
-nor2 #(1) g6_517(rst_n, n6_514, n6_518, n6_517);
-nor3      g6_518(rst_n, n6_517, n6_515, _CDUZ, n6_518);
+nor2 #(1) g6_517(rst_n, n6_514, _FLB, n6_517); // FIXME: _FLB is _FLC for trunnion
+nor3      g6_518(rst_n, n6_517, n6_515, _CDUZ, _FLB); // FIXME: _FLB is _FLC for trunnion
 nor2      g6_519(rst_n, n6_513, n6_516, n6_519);
 
 // Bit 12
@@ -413,16 +462,66 @@ nor3      g6_556(rst_n, n6_555, n6_554, _CDUZ, n6_556);
 nor1      g6_557(rst_n, n6_555, _XP15_n); // FIXME: wired differently for trunnion
 nor1      g6_558(rst_n, n6_556, _XP15); // FIXME: wired differently for trunnion
 
+// Pulse out
 nor2      g6_559(rst_n, n6_403, n6_406, _DEL0H);
 
+// Switch gates
+nor1      g6_560(rst_n, n6_408, _D21); // FIXME: wired differently for trunnion
+nor1      g6_561(rst_n, n6_418, _D20); // FIXME: wired differently for trunnion
+nor1      g6_562(rst_n, n6_428, _D19); // FIXME: wired differently for trunnion
+nor1      g6_563(rst_n, n6_438, _D18); // FIXME: wired differently for trunnion
+nor1      g6_564(rst_n, n6_448, _D17); // FIXME: wired differently for trunnion
+nor1      g6_565(rst_n, n6_458, _D16); // FIXME: wired differently for trunnion
+nor1      g6_566(rst_n, n6_468, _D15); // FIXME: wired differently for trunnion
+nor1      g6_567(rst_n, _FLA, _FLG); // FIXME: wired differently for trunnion
+nor1      g6_568(rst_n, n6_487, _FLE); // FIXME: wired differently for trunnion
+nor1      g6_569(rst_n, n6_488, _FLF); // FIXME: wired differently for trunnion
+nor1      g6_570(rst_n, n6_497, _FLD); // FIXME: wired differently for trunnion
 nor1      g6_571(rst_n, n6_498, _DC12); // FIXME: wired differently for trunnion
+nor1      g6_572(rst_n, n6_507, _D11); // FIXME: wired differently for trunnion
+nor1      g6_573(rst_n, n6_507, _FLC); // FIXME: wired differently for trunnion
 nor1      g6_574(rst_n, n6_508, _DC11); // FIXME: wired differently for trunnion
-nor1      g6_576(rst_n, n6_518, _DC10); // FIXME: wired differently for trunnion
+assign _D14 = _DC11; // FIXME: wired differently for trunnion
+nor1      g6_575(rst_n, n6_517, _D8); // FIXME: wired differently for trunnion
+nor1      g6_576(rst_n, _FLB, _DC10); // FIXME: wired differently for trunnion
+assign _D7 = _DC10; // FIXME: wired differently for trunnion
 nor1      g6_577(rst_n, n6_527, _DC9); // FIXME: wired differently for trunnion
 nor1      g6_578(rst_n, n6_537, _XP13_n); // FIXME: wired differently for trunnion
 nor1      g6_579(rst_n, n6_538, _XP13); // FIXME: wired differently for trunnion
 nor1      g6_580(rst_n, n6_547, _XP14_n); // FIXME: wired differently for trunnion
 nor2      g6_581(rst_n, _Q, n6_548, _XP14); // FIXME: wired differently for trunnion
+
+// Fine logic
+nor1      g6_582(rst_n, _FLB, n6_582);
+nor1      g6_583(rst_n, _FLC, n6_583);
+nor1      g6_584(rst_n, n6_583, n6_584);
+//nor1    g6_585(rst_n, n6_583, n6_584);
+//nor1    g6_586(rst_n, _FLC, n6_583);
+nor1      g6_587(rst_n, _FLD, n6_587);
+nor2      g6_588(rst_n, n6_583, _FLG, n6_588);
+nor1      g6_589(rst_n, n6_588, _D10);
+nor2      g6_590(rst_n, n6_583, _FLA, n6_590);
+nor1      g6_591(rst_n, n6_590, _D9);
+nor2      g6_592(rst_n, n6_584, _FLG, n6_592);
+nor1      g6_593(rst_n, n6_592, _D13);
+nor2      g6_594(rst_n, n6_584, _FLA, n6_594);
+nor1      g6_595(rst_n, n6_594, _D12);
+nor2      g6_596(rst_n, n6_582, n6_584, n6_596);
+nor2      g6_597(rst_n, n6_596, n6_598, _D6);
+nor2      g6_598(rst_n, _FLB, n6_583, n6_598);
+nor1      g6_599(rst_n, _D6, _D5);
+nor3      g6_600(rst_n, n6_584, n6_587, _FLF, n6_600);
+nor2      g6_601(rst_n, n6_600, n6_602, _D4);
+nor3      g6_602(rst_n, n6_583, _FLD, _FLE, n6_602);
+nor3      g6_603(rst_n, n6_583, _FLD, _FLF, n6_603);
+nor2      g6_604(rst_n, n6_603, n6_605, _D3);
+nor3      g6_605(rst_n, n6_584, n6_587, _FLE, n6_605);
+nor3      g6_606(rst_n, n6_584, _FLD, _FLF, n6_606);
+nor2      g6_607(rst_n, n6_606, n6_608, _D2);
+nor3      g6_608(rst_n, n6_583, n6_587, _FLE, n6_608);
+nor3      g6_609(rst_n, n6_584, _FLD, _FLE, n6_609);
+nor2      g6_610(rst_n, n6_609, n6_611, _D1);
+nor3      g6_611(rst_n, n6_583, n6_587, _FLF, n6_611);
 
 // Coarse logic
 nor3      g6_612(rst_n, _XP15, _XP14, _XP13_n, n6_612);
@@ -441,6 +540,9 @@ nor3      g6_624(rst_n, _XP15, _XP14_n, _XP13_n, _RSETB);
 nor2      g6_625(rst_n, _RSETB, n6_626, _DC1);
 nor3      g6_626(rst_n, _XP15_n, _XP14, _XP13, n6_626);
 nor2      g6_627(rst_n, n6_619, n6_626, _DC5);
+
+// Pulse out
+nor2      g6_629(rst_n, n6_423, n6_426, _DEL2H);
 
 endmodule
 `default_nettype wire

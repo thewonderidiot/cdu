@@ -4,6 +4,8 @@ MODULES = interrogate\
 	  error_angle\
 	  coarse\
 	  read_counter\
+	  quadrant_selector\
+	  da_converter\
 
 
 COMPONENTS = nor1\
