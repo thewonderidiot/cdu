@@ -3,7 +3,6 @@
 
 module cdu(
     input wire rst_n,
-    input wire fine1_en,
 
     input wire CLOCKH,
     input wire real U28RFH,
@@ -22,6 +21,7 @@ module cdu(
 
     // Test points
     output wire real ATPCA,
+    output wire real AMTPA,
     output wire ATPC1,
     output wire ATPF1,
     output wire ATPF2,
@@ -30,16 +30,6 @@ module cdu(
     output wire ATPAD,
     output wire ATPPI
 );
-
-/*------------------------------------------------.
-| Simulation stuff (to be pushed internal)        |
-'------------------------------------------------*/
-reg ATLF1H = 0;
-
-always begin
-    #625000 ATLF1H = fine1_en;
-    #625000 ATLF1H = 0;
-end
 
 /*------------------------------------------------.
 | Internal wiring                                 |
@@ -74,6 +64,8 @@ wire CCDUZ;
 wire AUPLVL;
 wire ADNLVL;
 wire ATLC1H;
+wire ATLF2H;
+wire ATLF1H;
 wire AADHI;
 wire APIHI;
 wire AAO;
@@ -123,8 +115,20 @@ wire BEEC;
 wire CCA;
 wire CEEC;
 
-// Wires without drivers
-reg ATLF2H = 0;
+wire real AS10;
+wire real AS13;
+wire real AS1SIN;
+wire real AS2SIN;
+wire real AS3SIN;
+wire real AS4SIN;
+wire real AS1COS;
+wire real AS2COS;
+wire real AS3COS;
+wire real AS4COS;
+wire real A1125A;
+wire real A1125B;
+wire real ABIASA;
+wire real ABIASB;
 
 /*------------------------------------------------.
 | Modules                                         |
@@ -336,10 +340,73 @@ quadrant_selector s17(
     ._FSINH(AFSINH),
     ._FCOSH(AFCOSH),
     
+    ._D1(AD1),
+    ._D2(AD2),
+    ._D3(AD3),
+    ._D4(AD4),
     ._D5(AD5),
     ._D6(AD6),
     ._D7(AD7),
-    ._D8(AD8)
+    ._D8(AD8),
+    ._D9(AD9),
+    ._D10(AD10),
+    ._D11(AD11),
+    ._D12(AD12),
+    ._D13(AD13),
+    ._D14(AD14),
+
+    ._S1SIN(AS1SIN),
+    ._S2SIN(AS2SIN),
+    ._S3SIN(AS3SIN),
+    ._S4SIN(AS4SIN),
+
+    ._S1COS(AS1COS),
+    ._S2COS(AS2COS),
+    ._S3COS(AS3COS),
+    ._S4COS(AS4COS),
+
+    ._S10(AS10),
+    ._S13(AS13),
+
+    ._1125A(A1125A),
+    ._BIASA(ABIASA),
+    ._1125B(A1125B),
+    ._BIASB(ABIASB)
+);
+
+msa_qr s18(
+    .rst_n(rst_n),
+
+    ._D15(AD15),
+    ._D16(AD16),
+    ._D17(AD17),
+    ._D18(AD18),
+    ._D19(AD19),
+    ._D20(AD20),
+    ._D21(AD21),
+
+    ._S1SIN(AS1SIN),
+    ._S2SIN(AS2SIN),
+    ._S3SIN(AS3SIN),
+    ._S4SIN(AS4SIN),
+
+    ._S1COS(AS1COS),
+    ._S2COS(AS2COS),
+    ._S3COS(AS3COS),
+    ._S4COS(AS4COS),
+
+    ._S10(AS10),
+    ._S13(AS13),
+
+    ._1125A(A1125A),
+    ._BIASA(ABIASA),
+    ._1125B(A1125B),
+    ._BIASB(ABIASB),
+
+    ._TLF2H(ATLF2H),
+    ._TLF1H(ATLF1H),
+
+    ._MTPA(AMTPA)
 );
 
 endmodule

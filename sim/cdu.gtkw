@@ -1,19 +1,19 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Sun Mar 15 18:20:54 2020
+[*] Mon Mar 16 06:00:50 2020
 [*]
 [dumpfile] "/home/mike/cdu/sim/dump.fst"
-[dumpfile_mtime] "Sun Mar 15 18:12:48 2020"
-[dumpfile_size] 140542445
+[dumpfile_mtime] "Mon Mar 16 05:59:57 2020"
+[dumpfile_size] 199117031
 [savefile] "/home/mike/cdu/sim/cdu.gtkw"
-[timestart] 4801000000
+[timestart] 309800000000
 [size] 1920 1026
 [pos] -1 -1
-*-28.000000 5262000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-35.000000 423700000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] cdu_sim.
 [treeopen] cdu_sim.cdu.
 [sst_width] 223
-[signals_width] 227
+[signals_width] 241
 [sst_expanded] 1
 [sst_vpaned_height] 312
 @90022
@@ -35,17 +35,22 @@ cdu_sim.cdu.ACCOSH
 cdu_sim.ATPCA
 @20000
 -
+@90022
+cdu_sim.AMTPA
+@20000
+-
 @28
 cdu_sim.ATpPGH
-@29
 cdu_sim.ATmPGH
-@28
 cdu_sim.ATPC1
+cdu_sim.ATPF2
+cdu_sim.ATPF1
 cdu_sim.ATPS
 cdu_sim.ATPUG
-cdu_sim.ATPAD
 cdu_sim.ATPPI
-@c00070
+@10c00070
+[transaction_args] ""
+^<1 ./scripts/read_counter_angle.py
 +{ARDCNT} #{cdu_sim.cdu.s16.n6_[555:407]} cdu_sim.cdu.s16.n6_555 cdu_sim.cdu.s16.n6_547 cdu_sim.cdu.s16.n6_537 cdu_sim.cdu.s16.n6_527 cdu_sim.cdu.s16.n6_517 cdu_sim.cdu.s16.n6_507 cdu_sim.cdu.s16.n6_497 cdu_sim.cdu.s16.n6_487 cdu_sim.cdu.s16.n6_477 cdu_sim.cdu.s16.n6_467 cdu_sim.cdu.s16.n6_457 cdu_sim.cdu.s16.n6_447 cdu_sim.cdu.s16.n6_437 cdu_sim.cdu.s16.n6_427 cdu_sim.cdu.s16.n6_417 cdu_sim.cdu.s16.n6_407
 @28
 cdu_sim.cdu.s16.n6_407
@@ -64,7 +69,7 @@ cdu_sim.cdu.s16.n6_527
 cdu_sim.cdu.s16.n6_537
 cdu_sim.cdu.s16.n6_547
 cdu_sim.cdu.s16.n6_555
-@1401250
+@1401200
 -group_end
 [pattern_trace] 1
 [pattern_trace] 0

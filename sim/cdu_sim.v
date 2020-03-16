@@ -8,11 +8,15 @@ module cdu_sim;
 | Simulation stuff                                                             |
 '-----------------------------------------------------------------------------*/
 reg rst_n = 0;
-reg fine1_en = 1;
 
-reg real shaft_angle = 1.178097;
-reg real atca_phase = 1.5;
+reg real shaft_angle = 266.3;
+reg real atca_phase = 0;
 reg lgc = 1;
+
+wire real shaft_angle_rad;
+wire real atca_phase_rad;
+assign shaft_angle_rad = shaft_angle * `M_PI / 180;
+assign atca_phase_rad = shaft_angle * `M_PI / 180;
 
 /*-----------------------------------------------------------------------------.
 | External inputs                                                              |
@@ -36,7 +40,7 @@ initial begin
 end
 always begin
     #2500 U28RFH = 28*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9));
-    atca_ref = 15*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9) - atca_phase);
+    atca_ref = 15*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9) - atca_phase_rad);
 end
 
 // 1X resolver sin/cos outputs
@@ -48,11 +52,11 @@ wire real AFCOSH;
 wire real resolver_ref;
 assign resolver_ref = lgc ? U28RFH : atca_ref;
 
-assign ACSINH = (26/28.0)*$sin(shaft_angle)*resolver_ref;
-assign ACCOSH = (26/28.0)*$cos(shaft_angle)*resolver_ref;
+assign ACSINH = (26/28.0)*$sin(shaft_angle_rad)*resolver_ref;
+assign ACCOSH = (26/28.0)*$cos(shaft_angle_rad)*resolver_ref;
 
-assign AFSINH = (5/28.0)*$sin(16*shaft_angle)*resolver_ref;
-assign AFCOSH = (5/28.0)*$cos(16*shaft_angle)*resolver_ref;
+assign AFSINH = (5/28.0)*$sin(16*shaft_angle_rad)*resolver_ref;
+assign AFCOSH = (5/28.0)*$cos(16*shaft_angle_rad)*resolver_ref;
 
 // AGC moding inputs
 reg AGCCA = 1;
@@ -69,6 +73,7 @@ wire ATmPGH;
 | Test points                                                                  |
 '-----------------------------------------------------------------------------*/
 wire real ATPCA;
+wire real AMTPA;
 wire ATPC1;
 wire ATPF1;
 wire ATPF2;
@@ -82,7 +87,6 @@ wire ATPPI;
 '-----------------------------------------------------------------------------*/
 cdu cdu(
     .rst_n(rst_n),
-    .fine1_en(fine1_en),
 
     .CLOCKH(CLOCKH),
     .U28RFH(U28RFH),
@@ -100,6 +104,7 @@ cdu cdu(
     .ATmPGH(ATmPGH),
 
     .ATPCA(ATPCA),
+    .AMTPA(AMTPA),
     .ATPC1(ATPC1),
     .ATPF1(ATPF1),
     .ATPF2(ATPF2),
@@ -119,8 +124,8 @@ initial begin
     #1000 rst_n = 1'b1;
     #5000000;
     AGCZ = 1;
-    //#1200000000 lgc = 0;
-    #5000000000 $finish;
+    #3000000000 lgc = 0;
+    #4000000000 $finish;
 end
 
 endmodule

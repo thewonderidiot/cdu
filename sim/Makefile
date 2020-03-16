@@ -5,6 +5,7 @@ MODULES = interrogate\
 	  coarse\
 	  read_counter\
 	  quadrant_selector\
+	  msa_qr\
 	  da_converter\
 
 
@@ -29,7 +30,7 @@ cdu_sim: $(SOURCES)
 
 .phony: run
 run: cdu_sim
-	vvp cdu_sim -fst
+	vvp cdu_sim -fst -n
 
 .phone: clean
 clean:
