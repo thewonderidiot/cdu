@@ -9,14 +9,14 @@ module cdu_sim;
 '-----------------------------------------------------------------------------*/
 reg rst_n = 0;
 
-reg real shaft_angle = 266.3;
-reg real atca_phase = 0;
+reg real shaft_angle = 180;
+reg real atca_phase = 20;
 reg lgc = 1;
 
 wire real shaft_angle_rad;
 wire real atca_phase_rad;
 assign shaft_angle_rad = shaft_angle * `M_PI / 180;
-assign atca_phase_rad = shaft_angle * `M_PI / 180;
+assign atca_phase_rad = atca_phase * `M_PI / 180;
 
 /*-----------------------------------------------------------------------------.
 | External inputs                                                              |
@@ -40,7 +40,7 @@ initial begin
 end
 always begin
     #2500 U28RFH = 28*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9));
-    atca_ref = 15*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9) - atca_phase_rad);
+    atca_ref = 15*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9) + atca_phase_rad);
 end
 
 // 1X resolver sin/cos outputs
@@ -125,7 +125,7 @@ initial begin
     #5000000;
     AGCZ = 1;
     #3000000000 lgc = 0;
-    #4000000000 $finish;
+    #1000000000 $finish;
 end
 
 endmodule
