@@ -16,8 +16,14 @@ module cdu(
     input wire real AFSINH,
     input wire real AFCOSH,
 
+    input wire AFpPCH,
+    input wire AFmPCH,
+
     output wire ATpPGH,
     output wire ATmPGH,
+
+    output wire real ADACH,
+    output wire real ACAEHI,
 
     // Test points
     output wire real ATPCA,
@@ -72,8 +78,12 @@ wire AAO;
 wire AQ;
 wire ACA;
 wire AEEC;
+wire AmPCH;
+wire ApPCH;
 wire AmPGH;
 wire ApPGH;
+wire AmDAPL;
+wire ApDAPL;
 wire ARSETB;
 wire ADEL0H;
 wire ADEL2H;
@@ -110,6 +120,15 @@ wire AD18;
 wire AD19;
 wire AD20;
 wire AD21;
+wire ADD0;
+wire ADD1;
+wire ADD2;
+wire ADD3;
+wire ADD4;
+wire ADD5;
+wire ADD6;
+wire ADD7;
+wire ADD8;
 wire BCA;
 wire BEEC;
 wire CCA;
@@ -218,11 +237,30 @@ interrogate x03(
 da_converter s13(
     .rst_n(rst_n),
 
-    .ApPGH(ApPGH),
-    .AmPGH(AmPGH),
+    ._28RFH(U28RFH),
 
-    .ATpPGH(ATpPGH),
-    .ATmPGH(ATmPGH)
+    ._FpPCH(AFpPCH),
+    ._FmPCH(AFmPCH),
+    ._pPCH(ApPCH),
+    ._mPCH(AmPCH),
+
+    ._pPGH(ApPGH),
+    ._mPGH(AmPGH),
+    ._TpPGH(ATpPGH),
+    ._TmPGH(ATmPGH),
+
+    ._DD0(ADD0),
+    ._DD1(ADD1),
+    ._DD2(ADD2),
+    ._DD3(ADD3),
+    ._DD4(ADD4),
+    ._DD5(ADD5),
+    ._DD6(ADD6),
+    ._DD7(ADD7),
+    ._DD8(ADD8),
+
+    ._DACH(ADACH),
+    ._CAEHI(ACAEHI)
 );
 
 error_angle s14(
@@ -230,6 +268,7 @@ error_angle s14(
     .FAZ1HI(FAZ1HI),
     .FAZ2HI(FAZ2HI),
     .FAZ2HI_n(FAZ2HI_n),
+    .FAZ3HI(FAZ3HI),
     .FAZ4CA(FAZ4CA),
     ._REF1H(UREF1H),
     .___IHI(ISSIHI),
@@ -237,6 +276,10 @@ error_angle s14(
     .___I3H(ISSI3H),
     ._800LHI(_800LHI),
     ._INHRC(UINHRC),
+    ._CA(ACA),
+    ._EEC(AEEC),
+    ._mPCH(AmPCH),
+    ._pPCH(ApPCH),
     ._AO(AAO),
     ._TLC1H(ATLC1H),
     ._TLF1H(ATLF1H),
@@ -244,12 +287,25 @@ error_angle s14(
     ._ADHI(AADHI),
 
     ._DEL0H(ADEL0H),
+    ._DEL2H(ADEL2H),
 
     ._UPLVL(AUPLVL),
     ._DNLVL(ADNLVL),
     ._mPGH(AmPGH),
     ._pPGH(ApPGH),
     ._PIHI(APIHI),
+    ._mDAPL(AmDAPL),
+    ._pDAPL(ApDAPL),
+
+    ._DD0(ADD0),
+    ._DD1(ADD1),
+    ._DD2(ADD2),
+    ._DD3(ADD3),
+    ._DD4(ADD4),
+    ._DD5(ADD5),
+    ._DD6(ADD6),
+    ._DD7(ADD7),
+    ._DD8(ADD8),
 
     ._TPF1(ATPF1),
     ._TPF2(ATPF2),

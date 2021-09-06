@@ -9,14 +9,24 @@ module cdu_sim;
 '-----------------------------------------------------------------------------*/
 reg rst_n = 0;
 
-reg real shaft_angle = 180;
-reg real atca_phase = 20;
-reg lgc = 1;
+reg real shaft_angle = 88;
+reg real atca_phase = 90;
+reg lgc = 0;
 
 wire real shaft_angle_rad;
 wire real atca_phase_rad;
 assign shaft_angle_rad = shaft_angle * `M_PI / 180;
 assign atca_phase_rad = atca_phase * `M_PI / 180;
+
+reg [15:0] error_count = 0;
+
+/*-----------------------------------------------------------------------------.
+| CDU outputs                                                                  |
+'-----------------------------------------------------------------------------*/
+wire ATpPGH;
+wire ATmPGH;
+wire real ADACH;
+wire real ACAEHI;
 
 /*-----------------------------------------------------------------------------.
 | External inputs                                                              |
@@ -39,7 +49,7 @@ initial begin
     atca_ref = 0.1;
 end
 always begin
-    #2500 U28RFH = 28*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9));
+    #25000 U28RFH = 28*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9));
     atca_ref = 15*$sqrt(2)*$sin(`M_TWO_PI*800*($realtime/1e9) + atca_phase_rad);
 end
 
@@ -63,11 +73,31 @@ reg AGCCA = 1;
 reg AGCZ = 1;
 reg AGCEEC = 1;
 
-/*-----------------------------------------------------------------------------.
-| CDU outputs                                                                  |
-'-----------------------------------------------------------------------------*/
-wire ATpPGH;
-wire ATmPGH;
+// Error counter pulse inputs
+reg AFmPCH = 0;
+reg AFpPCH = 0;
+
+always begin
+    #310000;
+    if (error_count > 0) begin
+        AFpPCH = 1;
+        error_count = error_count - 1;
+    end else if (error_count < 0) begin
+        AFmPCH = 1;
+        error_count = error_count + 1;
+    end
+    #2500;
+    AFmPCH = 0;
+    AFpPCH = 0;
+end
+
+// Error counter shaft loop
+always begin
+    #10000000;
+    if (ADACH > 0.015) begin
+        shaft_angle += 0.0439453125;
+    end
+end
 
 /*-----------------------------------------------------------------------------.
 | Test points                                                                  |
@@ -100,8 +130,14 @@ cdu cdu(
     .AFSINH(AFSINH),
     .AFCOSH(AFCOSH),
 
+    .AFpPCH(AFpPCH),
+    .AFmPCH(AFmPCH),
+
     .ATpPGH(ATpPGH),
     .ATmPGH(ATmPGH),
+
+    .ADACH(ADACH),
+    .ACAEHI(ACAEHI),
 
     .ATPCA(ATPCA),
     .AMTPA(AMTPA),
@@ -124,8 +160,10 @@ initial begin
     #1000 rst_n = 1'b1;
     #5000000;
     AGCZ = 1;
-    #3000000000 lgc = 0;
-    #1000000000 $finish;
+    AGCEEC = 0;
+    AGCCA = 0;
+    error_count = 384;
+    #10000000000 $finish;
 end
 
 endmodule

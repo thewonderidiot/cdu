@@ -101,7 +101,11 @@ assign a2 = -(s1c + s2c + s3c + s4c + s1s + s2s + s3s + s4s + s9_1125 + s12_1125
 | Error Amplifier                                                              |
 '-----------------------------------------------------------------------------*/
 wire real fine_error;
-assign fine_error = a2 * 7.5;
+wire real amplified_error;
+assign amplified_error = a2 * 3;
+assign fine_error = (amplified_error > 2.0) ? 2.0 :
+                    (amplified_error < -2.0) ? -2.0 :
+                    amplified_error;
 
 assign _MTPA = fine_error;
 

@@ -80,8 +80,7 @@ assign _TLC1H = (sum >= 0.56*$sqrt(2));
 /*-----------------------------------------------------------------------------.
 | Ambiguity Detect                                                             |
 '-----------------------------------------------------------------------------*/
-// FIXME: The trigger should be on 12.25Vpp. Find the missing scaling factor.
-assign _ADHI = (_CCOSH >= 21.09);
+assign _ADHI = (_CCOSH >= 21.25*$sqrt(2));
 
 endmodule
 `default_nettype wire
