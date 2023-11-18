@@ -2,6 +2,7 @@
 `default_nettype none
 
 module read_counter(
+    input wire clk,
     input wire rst_n,
 
     input wire FAZ2HI_n,
@@ -272,277 +273,278 @@ wire _FLG;
 | Gates                                                                        |
 '-----------------------------------------------------------------------------*/
 // Bit 0
-nor2      g6_400(rst_n, n6_407, FAZ3HI, n6_400);
-nor2      g6_401(rst_n, FAZ2HI_n, n6_402, n6_401);
-nor2 #(1) g6_402(rst_n, n6_401, n6_400, n6_402);
-nor3      g6_403(rst_n, _DNLVL, n6_401, _PIHI, n6_403);
-nor2      g6_404(rst_n, n6_401, _PIHI, n6_404);
-nor2      g6_405(rst_n, _PIHI, n6_402, n6_405);
-nor3      g6_406(rst_n, _PIHI, n6_402, _UPLVL, n6_406);
-nor2 #(1) g6_407(rst_n, n6_404, n6_408, n6_407);
-nor3      g6_408(rst_n, n6_407, n6_405, _CDUZ, n6_408);
-nor2      g6_409(rst_n, n6_403, n6_406, n6_409);
+nor3      g6_400(n6_400, n6_407, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_401(n6_401, FAZ2HI_n, n6_402, 1'b0, clk, rst_n);
+nor3 #(1) g6_402(n6_402, n6_401, n6_400, 1'b0, clk, rst_n);
+nor3      g6_403(n6_403, _DNLVL, n6_401, _PIHI, clk, rst_n);
+nor3      g6_404(n6_404, n6_401, _PIHI, 1'b0, clk, rst_n);
+nor3      g6_405(n6_405, _PIHI, n6_402, 1'b0, clk, rst_n);
+nor3      g6_406(n6_406, _PIHI, n6_402, _UPLVL, clk, rst_n);
+nor3 #(1) g6_407(n6_407, n6_404, n6_408, 1'b0, clk, rst_n);
+nor3      g6_408(n6_408, n6_407, n6_405, _CDUZ, clk, rst_n);
+nor3      g6_409(n6_409, n6_403, n6_406, 1'b0, clk, rst_n);
 
 // Bit 1
-nor2      g6_410(rst_n, n6_417, FAZ3HI, n6_410);
-nor2      g6_411(rst_n, FAZ2HI_n, n6_412, n6_411);
-nor2 #(1) g6_412(rst_n, n6_411, n6_410, n6_412);
-nor3      g6_413(rst_n, _DNLVL, n6_411, n6_409, n6_413);
-nor2      g6_414(rst_n, n6_411, n6_409, n6_414);
-nor2      g6_415(rst_n, n6_409, n6_412, n6_415);
-nor3      g6_416(rst_n, n6_409, n6_412, _UPLVL, n6_416);
-nor2 #(1) g6_417(rst_n, n6_414, n6_418, n6_417);
-nor3      g6_418(rst_n, n6_417, n6_415, _CDUZ, n6_418);
-nor2      g6_419(rst_n, n6_413, n6_416, n6_419);
+nor3      g6_410(n6_410, n6_417, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_411(n6_411, FAZ2HI_n, n6_412, 1'b0, clk, rst_n);
+nor3 #(1) g6_412(n6_412, n6_411, n6_410, 1'b0, clk, rst_n);
+nor3      g6_413(n6_413, _DNLVL, n6_411, n6_409, clk, rst_n);
+nor3      g6_414(n6_414, n6_411, n6_409, 1'b0, clk, rst_n);
+nor3      g6_415(n6_415, n6_409, n6_412, 1'b0, clk, rst_n);
+nor3      g6_416(n6_416, n6_409, n6_412, _UPLVL, clk, rst_n);
+nor3 #(1) g6_417(n6_417, n6_414, n6_418, 1'b0, clk, rst_n);
+nor3      g6_418(n6_418, n6_417, n6_415, _CDUZ, clk, rst_n);
+nor3      g6_419(n6_419, n6_413, n6_416, 1'b0, clk, rst_n);
 
 // Bit 2
-nor2      g6_420(rst_n, n6_427, FAZ3HI, n6_420);
-nor2      g6_421(rst_n, FAZ2HI_n, n6_422, n6_421);
-nor2 #(1) g6_422(rst_n, n6_421, n6_420, n6_422);
-nor3      g6_423(rst_n, _DNLVL, n6_421, n6_419, n6_423);
-nor2      g6_424(rst_n, n6_421, n6_419, n6_424);
-nor2      g6_425(rst_n, n6_419, n6_422, n6_425);
-nor3      g6_426(rst_n, n6_419, n6_422, _UPLVL, n6_426);
-nor2 #(1) g6_427(rst_n, n6_424, n6_428, n6_427);
-nor3      g6_428(rst_n, n6_427, n6_425, _CDUZ, n6_428);
-nor2      g6_429(rst_n, n6_423, n6_426, n6_429);
+nor3      g6_420(n6_420, n6_427, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_421(n6_421, FAZ2HI_n, n6_422, 1'b0, clk, rst_n);
+nor3 #(1) g6_422(n6_422, n6_421, n6_420, 1'b0, clk, rst_n);
+nor3      g6_423(n6_423, _DNLVL, n6_421, n6_419, clk, rst_n);
+nor3      g6_424(n6_424, n6_421, n6_419, 1'b0, clk, rst_n);
+nor3      g6_425(n6_425, n6_419, n6_422, 1'b0, clk, rst_n);
+nor3      g6_426(n6_426, n6_419, n6_422, _UPLVL, clk, rst_n);
+nor3 #(1) g6_427(n6_427, n6_424, n6_428, 1'b0, clk, rst_n);
+nor3      g6_428(n6_428, n6_427, n6_425, _CDUZ, clk, rst_n);
+nor3      g6_429(n6_429, n6_423, n6_426, 1'b0, clk, rst_n);
 
 // Bit 3
-nor2      g6_430(rst_n, n6_437, FAZ3HI, n6_430);
-nor2      g6_431(rst_n, FAZ2HI_n, n6_432, n6_431);
-nor2 #(1) g6_432(rst_n, n6_431, n6_430, n6_432);
-nor3      g6_433(rst_n, _DNLVL, n6_431, n6_429, n6_433);
-nor2      g6_434(rst_n, n6_431, n6_429, n6_434);
-nor2      g6_435(rst_n, n6_429, n6_432, n6_435);
-nor3      g6_436(rst_n, n6_429, n6_432, _UPLVL, n6_436);
-nor2 #(1) g6_437(rst_n, n6_434, n6_438, n6_437);
-nor3      g6_438(rst_n, n6_437, n6_435, _CDUZ, n6_438);
-nor2      g6_439(rst_n, n6_433, n6_436, n6_439);
+nor3      g6_430(n6_430, n6_437, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_431(n6_431, FAZ2HI_n, n6_432, 1'b0, clk, rst_n);
+nor3 #(1) g6_432(n6_432, n6_431, n6_430, 1'b0, clk, rst_n);
+nor3      g6_433(n6_433, _DNLVL, n6_431, n6_429, clk, rst_n);
+nor3      g6_434(n6_434, n6_431, n6_429, 1'b0, clk, rst_n);
+nor3      g6_435(n6_435, n6_429, n6_432, 1'b0, clk, rst_n);
+nor3      g6_436(n6_436, n6_429, n6_432, _UPLVL, clk, rst_n);
+nor3 #(1) g6_437(n6_437, n6_434, n6_438, 1'b0, clk, rst_n);
+nor3      g6_438(n6_438, n6_437, n6_435, _CDUZ, clk, rst_n);
+nor3      g6_439(n6_439, n6_433, n6_436, 1'b0, clk, rst_n);
 
 // Bit 4
-nor2      g6_440(rst_n, n6_447, FAZ3HI, n6_440);
-nor2      g6_441(rst_n, FAZ2HI_n, n6_442, n6_441);
-nor2 #(1) g6_442(rst_n, n6_441, n6_440, n6_442);
-nor3      g6_443(rst_n, _DNLVL, n6_441, n6_439, n6_443);
-nor2      g6_444(rst_n, n6_441, n6_439, n6_444);
-nor2      g6_445(rst_n, n6_439, n6_442, n6_445);
-nor3      g6_446(rst_n, n6_439, n6_442, _UPLVL, n6_446);
-nor2 #(1) g6_447(rst_n, n6_444, n6_448, n6_447);
-nor3      g6_448(rst_n, n6_447, n6_445, _CDUZ, n6_448);
-nor2      g6_449(rst_n, n6_443, n6_446, n6_449);
+nor3      g6_440(n6_440, n6_447, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_441(n6_441, FAZ2HI_n, n6_442, 1'b0, clk, rst_n);
+nor3 #(1) g6_442(n6_442, n6_441, n6_440, 1'b0, clk, rst_n);
+nor3      g6_443(n6_443, _DNLVL, n6_441, n6_439, clk, rst_n);
+nor3      g6_444(n6_444, n6_441, n6_439, 1'b0, clk, rst_n);
+nor3      g6_445(n6_445, n6_439, n6_442, 1'b0, clk, rst_n);
+nor3      g6_446(n6_446, n6_439, n6_442, _UPLVL, clk, rst_n);
+nor3 #(1) g6_447(n6_447, n6_444, n6_448, 1'b0, clk, rst_n);
+nor3      g6_448(n6_448, n6_447, n6_445, _CDUZ, clk, rst_n);
+nor3      g6_449(n6_449, n6_443, n6_446, 1'b0, clk, rst_n);
 
 // Bit 5
-nor2      g6_450(rst_n, n6_457, FAZ3HI, n6_450);
-nor2      g6_451(rst_n, FAZ2HI_n, n6_452, n6_451);
-nor2 #(1) g6_452(rst_n, n6_451, n6_450, n6_452);
-nor3      g6_453(rst_n, _DNLVL, n6_451, n6_449, n6_453);
-nor2      g6_454(rst_n, n6_451, n6_449, n6_454);
-nor2      g6_455(rst_n, n6_449, n6_452, n6_455);
-nor3      g6_456(rst_n, n6_449, n6_452, _UPLVL, n6_456);
-nor2 #(1) g6_457(rst_n, n6_454, n6_458, n6_457);
-nor3      g6_458(rst_n, n6_457, n6_455, _CDUZ, n6_458);
-nor2      g6_459(rst_n, n6_453, n6_456, n6_459);
+nor3      g6_450(n6_450, n6_457, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_451(n6_451, FAZ2HI_n, n6_452, 1'b0, clk, rst_n);
+nor3 #(1) g6_452(n6_452, n6_451, n6_450, 1'b0, clk, rst_n);
+nor3      g6_453(n6_453, _DNLVL, n6_451, n6_449, clk, rst_n);
+nor3      g6_454(n6_454, n6_451, n6_449, 1'b0, clk, rst_n);
+nor3      g6_455(n6_455, n6_449, n6_452, 1'b0, clk, rst_n);
+nor3      g6_456(n6_456, n6_449, n6_452, _UPLVL, clk, rst_n);
+nor3 #(1) g6_457(n6_457, n6_454, n6_458, 1'b0, clk, rst_n);
+nor3      g6_458(n6_458, n6_457, n6_455, _CDUZ, clk, rst_n);
+nor3      g6_459(n6_459, n6_453, n6_456, 1'b0, clk, rst_n);
 
 // Bit 6
-nor2      g6_460(rst_n, n6_467, FAZ3HI, n6_460);
-nor2      g6_461(rst_n, FAZ2HI_n, n6_462, n6_461);
-nor2 #(1) g6_462(rst_n, n6_461, n6_460, n6_462);
-nor3      g6_463(rst_n, _DNLVL, n6_461, n6_459, n6_463);
-nor2      g6_464(rst_n, n6_461, n6_459, n6_464);
-nor2      g6_465(rst_n, n6_459, n6_462, n6_465);
-nor3      g6_466(rst_n, n6_459, n6_462, _UPLVL, n6_466);
-nor2 #(1) g6_467(rst_n, n6_464, n6_468, n6_467);
-nor3      g6_468(rst_n, n6_467, n6_465, _CDUZ, n6_468);
-nor2      g6_469(rst_n, n6_463, n6_466, n6_469);
+nor3      g6_460(n6_460, n6_467, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_461(n6_461, FAZ2HI_n, n6_462, 1'b0, clk, rst_n);
+nor3 #(1) g6_462(n6_462, n6_461, n6_460, 1'b0, clk, rst_n);
+nor3      g6_463(n6_463, _DNLVL, n6_461, n6_459, clk, rst_n);
+nor3      g6_464(n6_464, n6_461, n6_459, 1'b0, clk, rst_n);
+nor3      g6_465(n6_465, n6_459, n6_462, 1'b0, clk, rst_n);
+nor3      g6_466(n6_466, n6_459, n6_462, _UPLVL, clk, rst_n);
+nor3 #(1) g6_467(n6_467, n6_464, n6_468, 1'b0, clk, rst_n);
+nor3      g6_468(n6_468, n6_467, n6_465, _CDUZ, clk, rst_n);
+nor3      g6_469(n6_469, n6_463, n6_466, 1'b0, clk, rst_n);
 
 // Bit 7
-nor2      g6_470(rst_n, n6_477, FAZ3HI, n6_470);
-nor2      g6_471(rst_n, FAZ2HI_n, n6_472, n6_471);
-nor2 #(1) g6_472(rst_n, n6_471, n6_470, n6_472);
-nor3      g6_473(rst_n, _DNLVL, n6_471, n6_469, n6_473);
-nor2      g6_474(rst_n, n6_471, n6_469, n6_474);
-nor2      g6_475(rst_n, n6_469, n6_472, n6_475);
-nor3      g6_476(rst_n, n6_469, n6_472, _UPLVL, n6_476);
-nor2 #(1) g6_477(rst_n, n6_474, _FLA, n6_477);
-nor3      g6_478(rst_n, n6_477, n6_475, _CDUZ, _FLA);
-nor2      g6_479(rst_n, n6_473, n6_476, n6_479);
+nor3      g6_470(n6_470, n6_477, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_471(n6_471, FAZ2HI_n, n6_472, 1'b0, clk, rst_n);
+nor3 #(1) g6_472(n6_472, n6_471, n6_470, 1'b0, clk, rst_n);
+nor3      g6_473(n6_473, _DNLVL, n6_471, n6_469, clk, rst_n);
+nor3      g6_474(n6_474, n6_471, n6_469, 1'b0, clk, rst_n);
+nor3      g6_475(n6_475, n6_469, n6_472, 1'b0, clk, rst_n);
+nor3      g6_476(n6_476, n6_469, n6_472, _UPLVL, clk, rst_n);
+nor3 #(1) g6_477(n6_477, n6_474, _FLA, 1'b0, clk, rst_n);
+nor3      g6_478(_FLA, n6_477, n6_475, _CDUZ, clk, rst_n);
+nor3      g6_479(n6_479, n6_473, n6_476, 1'b0, clk, rst_n);
 
 // Bit 8
-nor2      g6_480(rst_n, n6_487, FAZ3HI, n6_480);
-nor2      g6_481(rst_n, FAZ2HI_n, n6_482, n6_481);
-nor2 #(1) g6_482(rst_n, n6_481, n6_480, n6_482);
-nor3      g6_483(rst_n, _DNLVL, n6_481, n6_479, n6_483);
-nor2      g6_484(rst_n, n6_481, n6_479, n6_484);
-nor2      g6_485(rst_n, n6_479, n6_482, n6_485);
-nor3      g6_486(rst_n, n6_479, n6_482, _UPLVL, n6_486);
-nor2 #(1) g6_487(rst_n, n6_484, n6_488, n6_487);
-nor3      g6_488(rst_n, n6_487, n6_485, _CDUZ, n6_488);
-nor2      g6_489(rst_n, n6_483, n6_486, n6_489);
+nor3      g6_480(n6_480, n6_487, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_481(n6_481, FAZ2HI_n, n6_482, 1'b0, clk, rst_n);
+nor3 #(1) g6_482(n6_482, n6_481, n6_480, 1'b0, clk, rst_n);
+nor3      g6_483(n6_483, _DNLVL, n6_481, n6_479, clk, rst_n);
+nor3      g6_484(n6_484, n6_481, n6_479, 1'b0, clk, rst_n);
+nor3      g6_485(n6_485, n6_479, n6_482, 1'b0, clk, rst_n);
+nor3      g6_486(n6_486, n6_479, n6_482, _UPLVL, clk, rst_n);
+nor3 #(1) g6_487(n6_487, n6_484, n6_488, 1'b0, clk, rst_n);
+nor3      g6_488(n6_488, n6_487, n6_485, _CDUZ, clk, rst_n);
+nor3      g6_489(n6_489, n6_483, n6_486, 1'b0, clk, rst_n);
 
 // Bit 9
-nor2      g6_490(rst_n, n6_497, FAZ3HI, n6_490);
-nor2      g6_491(rst_n, FAZ2HI_n, n6_492, n6_491);
-nor2 #(1) g6_492(rst_n, n6_491, n6_490, n6_492);
-nor3      g6_493(rst_n, _DNLVL, n6_491, n6_489, n6_493);
-nor2      g6_494(rst_n, n6_491, n6_489, n6_494);
-nor2      g6_495(rst_n, n6_489, n6_492, n6_495);
-nor3      g6_496(rst_n, n6_489, n6_492, _UPLVL, n6_496);
-nor2 #(1) g6_497(rst_n, n6_494, n6_498, n6_497);
-nor3      g6_498(rst_n, n6_497, n6_495, _CDUZ, n6_498);
-nor2      g6_499(rst_n, n6_493, n6_496, n6_499);
+nor3      g6_490(n6_490, n6_497, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_491(n6_491, FAZ2HI_n, n6_492, 1'b0, clk, rst_n);
+nor3 #(1) g6_492(n6_492, n6_491, n6_490, 1'b0, clk, rst_n);
+nor3      g6_493(n6_493, _DNLVL, n6_491, n6_489, clk, rst_n);
+nor3      g6_494(n6_494, n6_491, n6_489, 1'b0, clk, rst_n);
+nor3      g6_495(n6_495, n6_489, n6_492, 1'b0, clk, rst_n);
+nor3      g6_496(n6_496, n6_489, n6_492, _UPLVL, clk, rst_n);
+nor3 #(1) g6_497(n6_497, n6_494, n6_498, 1'b0, clk, rst_n);
+nor3      g6_498(n6_498, n6_497, n6_495, _CDUZ, clk, rst_n);
+nor3      g6_499(n6_499, n6_493, n6_496, 1'b0, clk, rst_n);
 
 // Bit 10
-nor2      g6_500(rst_n, n6_507, FAZ3HI, n6_500);
-nor2      g6_501(rst_n, FAZ2HI_n, n6_502, n6_501);
-nor2 #(1) g6_502(rst_n, n6_501, n6_500, n6_502);
-nor3      g6_503(rst_n, _DNLVL, n6_501, n6_499, n6_503);
-nor2      g6_504(rst_n, n6_501, n6_499, n6_504);
-nor2      g6_505(rst_n, n6_499, n6_502, n6_505);
-nor3      g6_506(rst_n, n6_499, n6_502, _UPLVL, n6_506);
-nor2 #(1) g6_507(rst_n, n6_504, n6_508, n6_507);
-nor3      g6_508(rst_n, n6_507, n6_505, _CDUZ, n6_508);
-nor2      g6_509(rst_n, n6_503, n6_506, n6_509);
+nor3      g6_500(n6_500, n6_507, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_501(n6_501, FAZ2HI_n, n6_502, 1'b0, clk, rst_n);
+nor3 #(1) g6_502(n6_502, n6_501, n6_500, 1'b0, clk, rst_n);
+nor3      g6_503(n6_503, _DNLVL, n6_501, n6_499, clk, rst_n);
+nor3      g6_504(n6_504, n6_501, n6_499, 1'b0, clk, rst_n);
+nor3      g6_505(n6_505, n6_499, n6_502, 1'b0, clk, rst_n);
+nor3      g6_506(n6_506, n6_499, n6_502, _UPLVL, clk, rst_n);
+nor3 #(1) g6_507(n6_507, n6_504, n6_508, 1'b0, clk, rst_n);
+nor3      g6_508(n6_508, n6_507, n6_505, _CDUZ, clk, rst_n);
+nor3      g6_509(n6_509, n6_503, n6_506, 1'b0, clk, rst_n);
 
 // Bit 11
-nor2      g6_510(rst_n, n6_517, FAZ3HI, n6_510);
-nor2      g6_511(rst_n, FAZ2HI_n, n6_512, n6_511);
-nor2 #(1) g6_512(rst_n, n6_511, n6_510, n6_512);
-nor3      g6_513(rst_n, _DNLVL, n6_511, n6_509, n6_513);
-nor2      g6_514(rst_n, n6_511, n6_509, n6_514);
-nor2      g6_515(rst_n, n6_509, n6_512, n6_515);
-nor3      g6_516(rst_n, n6_509, n6_512, _UPLVL, n6_516);
-nor2 #(1) g6_517(rst_n, n6_514, _FLB, n6_517); // FIXME: _FLB is _FLC for trunnion
-nor3      g6_518(rst_n, n6_517, n6_515, _CDUZ, _FLB); // FIXME: _FLB is _FLC for trunnion
-nor2      g6_519(rst_n, n6_513, n6_516, n6_519);
+nor3      g6_510(n6_510, n6_517, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_511(n6_511, FAZ2HI_n, n6_512, 1'b0, clk, rst_n);
+nor3 #(1) g6_512(n6_512, n6_511, n6_510, 1'b0, clk, rst_n);
+nor3      g6_513(n6_513, _DNLVL, n6_511, n6_509, clk, rst_n);
+nor3      g6_514(n6_514, n6_511, n6_509, 1'b0, clk, rst_n);
+nor3      g6_515(n6_515, n6_509, n6_512, 1'b0, clk, rst_n);
+nor3      g6_516(n6_516, n6_509, n6_512, _UPLVL, clk, rst_n);
+nor3 #(1) g6_517(n6_517, n6_514, _FLB, 1'b0, clk, rst_n);
+nor3      g6_518(_FLB, n6_517, n6_515, _CDUZ, clk, rst_n);
+nor3      g6_519(n6_519, n6_513, n6_516, 1'b0, clk, rst_n);
 
 // Bit 12
-nor2      g6_520(rst_n, n6_527, FAZ3HI, n6_520);
-nor2      g6_521(rst_n, FAZ2HI_n, n6_522, n6_521);
-nor2 #(1) g6_522(rst_n, n6_521, n6_520, n6_522);
-nor3      g6_523(rst_n, _DNLVL, n6_521, n6_519, n6_523);
-nor2      g6_524(rst_n, n6_521, n6_519, n6_524);
-nor2      g6_525(rst_n, n6_519, n6_522, n6_525);
-nor3      g6_526(rst_n, n6_519, n6_522, _UPLVL, n6_526);
-nor2 #(1) g6_527(rst_n, n6_524, n6_528, n6_527);
-nor3      g6_528(rst_n, n6_527, n6_525, _CDUZ, n6_528);
-nor2      g6_529(rst_n, n6_523, n6_526, n6_529);
+nor3      g6_520(n6_520, n6_527, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_521(n6_521, FAZ2HI_n, n6_522, 1'b0, clk, rst_n);
+nor3 #(1) g6_522(n6_522, n6_521, n6_520, 1'b0, clk, rst_n);
+nor3      g6_523(n6_523, _DNLVL, n6_521, n6_519, clk, rst_n);
+nor3      g6_524(n6_524, n6_521, n6_519, 1'b0, clk, rst_n);
+nor3      g6_525(n6_525, n6_519, n6_522, 1'b0, clk, rst_n);
+nor3      g6_526(n6_526, n6_519, n6_522, _UPLVL, clk, rst_n);
+nor3 #(1) g6_527(n6_527, n6_524, n6_528, 1'b0, clk, rst_n);
+nor3      g6_528(n6_528, n6_527, n6_525, _CDUZ, clk, rst_n);
+nor3      g6_529(n6_529, n6_523, n6_526, 1'b0, clk, rst_n);
 
 // Bit 13
-nor2      g6_530(rst_n, n6_537, FAZ3HI, n6_530);
-nor2      g6_531(rst_n, FAZ2HI_n, n6_532, n6_531);
-nor2 #(1) g6_532(rst_n, n6_531, n6_530, n6_532);
-nor3      g6_533(rst_n, _DNLVL, n6_531, n6_529, n6_533);
-nor2      g6_534(rst_n, n6_531, n6_529, n6_534);
-nor2      g6_535(rst_n, n6_529, n6_532, n6_535);
-nor3      g6_536(rst_n, n6_529, n6_532, _UPLVL, n6_536);
-nor2 #(1) g6_537(rst_n, n6_534, n6_538, n6_537);
-nor3      g6_538(rst_n, n6_537, n6_535, _CDUZ, n6_538);
-nor2      g6_539(rst_n, n6_533, n6_536, n6_539);
+nor3      g6_530(n6_530, n6_537, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_531(n6_531, FAZ2HI_n, n6_532, 1'b0, clk, rst_n);
+nor3 #(1) g6_532(n6_532, n6_531, n6_530, 1'b0, clk, rst_n);
+nor3      g6_533(n6_533, _DNLVL, n6_531, n6_529, clk, rst_n);
+nor3      g6_534(n6_534, n6_531, n6_529, 1'b0, clk, rst_n);
+nor3      g6_535(n6_535, n6_529, n6_532, 1'b0, clk, rst_n);
+nor3      g6_536(n6_536, n6_529, n6_532, _UPLVL, clk, rst_n);
+nor3 #(1) g6_537(n6_537, n6_534, n6_538, 1'b0, clk, rst_n);
+nor3      g6_538(n6_538, n6_537, n6_535, _CDUZ, clk, rst_n);
+nor3      g6_539(n6_539, n6_533, n6_536, 1'b0, clk, rst_n);
 
 // Bit 14
-nor2      g6_540(rst_n, n6_547, FAZ3HI, n6_540);
-nor2      g6_541(rst_n, FAZ2HI_n, n6_542, n6_541);
-nor2 #(1) g6_542(rst_n, n6_541, n6_540, n6_542);
-nor3      g6_543(rst_n, _DNLVL, n6_541, n6_539, n6_543);
-nor2      g6_544(rst_n, n6_541, n6_539, n6_544);
-nor2      g6_545(rst_n, n6_539, n6_542, n6_545);
-nor3      g6_546(rst_n, n6_539, n6_542, _UPLVL, n6_546);
-nor3 #(1) g6_547(rst_n, _Q, n6_544, n6_548, n6_547);
-nor3      g6_548(rst_n, n6_547, n6_545, _CDUZ, n6_548);
-nor2      g6_549(rst_n, n6_543, n6_546, n6_549);
+nor3      g6_540(n6_540, n6_547, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_541(n6_541, FAZ2HI_n, n6_542, 1'b0, clk, rst_n);
+nor3 #(1) g6_542(n6_542, n6_541, n6_540, 1'b0, clk, rst_n);
+nor3      g6_543(n6_543, _DNLVL, n6_541, n6_539, clk, rst_n);
+nor3      g6_544(n6_544, n6_541, n6_539, 1'b0, clk, rst_n);
+nor3      g6_545(n6_545, n6_539, n6_542, 1'b0, clk, rst_n);
+nor3      g6_546(n6_546, n6_539, n6_542, _UPLVL, clk, rst_n);
+nor3 #(1) g6_547(n6_547, _Q, n6_544, n6_548, clk, rst_n);
+nor3      g6_548(n6_548, n6_547, n6_545, _CDUZ, clk, rst_n);
+nor3      g6_549(n6_549, n6_543, n6_546, 1'b0, clk, rst_n);
 
 // Bit 15
-nor2      g6_550(rst_n, n6_555, FAZ3HI, n6_550);
-nor2      g6_551(rst_n, FAZ2HI_n, n6_552, n6_551);
-nor2 #(1) g6_552(rst_n, n6_551, n6_550, n6_552);
-nor2      g6_553(rst_n, n6_551, n6_549, n6_553);
-nor2      g6_554(rst_n, n6_549, n6_552, n6_554);
-nor2 #(1) g6_555(rst_n, n6_553, n6_556, n6_555);
-nor3      g6_556(rst_n, n6_555, n6_554, _CDUZ, n6_556);
-nor1      g6_557(rst_n, n6_555, _XP15_n); // FIXME: wired differently for trunnion
-nor1      g6_558(rst_n, n6_556, _XP15); // FIXME: wired differently for trunnion
+nor3      g6_550(n6_550, n6_555, FAZ3HI, 1'b0, clk, rst_n);
+nor3      g6_551(n6_551, FAZ2HI_n, n6_552, 1'b0, clk, rst_n);
+nor3 #(1) g6_552(n6_552, n6_551, n6_550, 1'b0, clk, rst_n);
+nor3      g6_553(n6_553, n6_551, n6_549, 1'b0, clk, rst_n);
+nor3      g6_554(n6_554, n6_549, n6_552, 1'b0, clk, rst_n);
+nor3 #(1) g6_555(n6_555, n6_553, n6_556, 1'b0, clk, rst_n);
+nor3      g6_556(n6_556, n6_555, n6_554, _CDUZ, clk, rst_n);
+nor3      g6_557(_XP15_n, n6_555, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_558(_XP15, n6_556, 1'b0, 1'b0, clk, rst_n);
 
 // Pulse out
-nor2      g6_559(rst_n, n6_403, n6_406, _DEL0H);
+nor3      g6_559(_DEL0H, n6_403, n6_406, 1'b0, clk, rst_n);
 
 // Switch gates
-nor1      g6_560(rst_n, n6_408, _D21); // FIXME: wired differently for trunnion
-nor1      g6_561(rst_n, n6_418, _D20); // FIXME: wired differently for trunnion
-nor1      g6_562(rst_n, n6_428, _D19); // FIXME: wired differently for trunnion
-nor1      g6_563(rst_n, n6_438, _D18); // FIXME: wired differently for trunnion
-nor1      g6_564(rst_n, n6_448, _D17); // FIXME: wired differently for trunnion
-nor1      g6_565(rst_n, n6_458, _D16); // FIXME: wired differently for trunnion
-nor1      g6_566(rst_n, n6_468, _D15); // FIXME: wired differently for trunnion
-nor1      g6_567(rst_n, _FLA, _FLG); // FIXME: wired differently for trunnion
-nor1      g6_568(rst_n, n6_487, _FLE); // FIXME: wired differently for trunnion
-nor1      g6_569(rst_n, n6_488, _FLF); // FIXME: wired differently for trunnion
-nor1      g6_570(rst_n, n6_497, _FLD); // FIXME: wired differently for trunnion
-nor1      g6_571(rst_n, n6_498, _DC12); // FIXME: wired differently for trunnion
-nor1      g6_572(rst_n, n6_507, _D11); // FIXME: wired differently for trunnion
-nor1      g6_573(rst_n, n6_507, _FLC); // FIXME: wired differently for trunnion
-nor1      g6_574(rst_n, n6_508, _DC11); // FIXME: wired differently for trunnion
+nor3      g6_560(_D21, n6_408, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_561(_D20, n6_418, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_562(_D19, n6_428, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_563(_D18, n6_438, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_564(_D17, n6_448, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_565(_D16, n6_458, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_566(_D15, n6_468, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_567(_FLG, _FLA, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_568(_FLE, n6_487, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_569(_FLF, n6_488, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_570(_FLD, n6_497, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_571(_DC12, n6_498, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_572(_D11, n6_507, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_573(_FLC, n6_507, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_574(_DC11, n6_508, 1'b0, 1'b0, clk, rst_n);
 assign _D14 = _DC11; // FIXME: wired differently for trunnion
-nor1      g6_575(rst_n, n6_517, _D8); // FIXME: wired differently for trunnion
-nor1      g6_576(rst_n, _FLB, _DC10); // FIXME: wired differently for trunnion
+nor3      g6_575(_D8, n6_517, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_576(_DC10, _FLB, 1'b0, 1'b0, clk, rst_n);
 assign _D7 = _DC10; // FIXME: wired differently for trunnion
-nor1      g6_577(rst_n, n6_527, _DC9); // FIXME: wired differently for trunnion
-nor1      g6_578(rst_n, n6_537, _XP13_n); // FIXME: wired differently for trunnion
-nor1      g6_579(rst_n, n6_538, _XP13); // FIXME: wired differently for trunnion
-nor1      g6_580(rst_n, n6_547, _XP14_n); // FIXME: wired differently for trunnion
-nor2      g6_581(rst_n, _Q, n6_548, _XP14); // FIXME: wired differently for trunnion
+nor3      g6_577(_DC9, n6_527, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_578(_XP13_n, n6_537, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_579(_XP13, n6_538, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_580(_XP14_n, n6_547, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_581(_XP14, _Q, n6_548, 1'b0, clk, rst_n);
 
 // Fine logic
-nor1      g6_582(rst_n, _FLB, n6_582);
-nor1      g6_583(rst_n, _FLC, n6_583);
-nor1      g6_584(rst_n, n6_583, n6_584);
-//nor1    g6_585(rst_n, n6_583, n6_584);
-//nor1    g6_586(rst_n, _FLC, n6_583);
-nor1      g6_587(rst_n, _FLD, n6_587);
-nor2      g6_588(rst_n, n6_583, _FLG, n6_588);
-nor1      g6_589(rst_n, n6_588, _D10);
-nor2      g6_590(rst_n, n6_583, _FLA, n6_590);
-nor1      g6_591(rst_n, n6_590, _D9);
-nor2      g6_592(rst_n, n6_584, _FLG, n6_592);
-nor1      g6_593(rst_n, n6_592, _D13);
-nor2      g6_594(rst_n, n6_584, _FLA, n6_594);
-nor1      g6_595(rst_n, n6_594, _D12);
-nor2      g6_596(rst_n, n6_582, n6_584, n6_596);
-nor2      g6_597(rst_n, n6_596, n6_598, _D6);
-nor2      g6_598(rst_n, _FLB, n6_583, n6_598);
-nor1      g6_599(rst_n, _D6, _D5);
-nor3      g6_600(rst_n, n6_584, n6_587, _FLF, n6_600);
-nor2      g6_601(rst_n, n6_600, n6_602, _D4);
-nor3      g6_602(rst_n, n6_583, _FLD, _FLE, n6_602);
-nor3      g6_603(rst_n, n6_583, _FLD, _FLF, n6_603);
-nor2      g6_604(rst_n, n6_603, n6_605, _D3);
-nor3      g6_605(rst_n, n6_584, n6_587, _FLE, n6_605);
-nor3      g6_606(rst_n, n6_584, _FLD, _FLF, n6_606);
-nor2      g6_607(rst_n, n6_606, n6_608, _D2);
-nor3      g6_608(rst_n, n6_583, n6_587, _FLE, n6_608);
-nor3      g6_609(rst_n, n6_584, _FLD, _FLE, n6_609);
-nor2      g6_610(rst_n, n6_609, n6_611, _D1);
-nor3      g6_611(rst_n, n6_583, n6_587, _FLF, n6_611);
+nor3      g6_582(n6_582, _FLB, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_583(n6_583, _FLC, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_584(n6_584, n6_583, 1'b0, 1'b0, clk, rst_n);
+//nor3    g6_585(n6_584, n6_583, 1'b0, 1'b0, clk, rst_n);
+//nor3    g6_586(n6_583, _FLC, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_587(n6_587, _FLD, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_588(n6_588, n6_583, _FLG, 1'b0, clk, rst_n);
+nor3      g6_589(_D10, n6_588, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_590(n6_590, n6_583, _FLA, 1'b0, clk, rst_n);
+nor3      g6_591(_D9, n6_590, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_592(n6_592, n6_584, _FLG, 1'b0, clk, rst_n);
+nor3      g6_593(_D13, n6_592, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_594(n6_594, n6_584, _FLA, 1'b0, clk, rst_n);
+nor3      g6_595(_D12, n6_594, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_596(n6_596, n6_582, n6_584, 1'b0, clk, rst_n);
+nor3      g6_597(_D6, n6_596, n6_598, 1'b0, clk, rst_n);
+nor3      g6_598(n6_598, _FLB, n6_583, 1'b0, clk, rst_n);
+nor3      g6_599(_D5, _D6, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_600(n6_600, n6_584, n6_587, _FLF, clk, rst_n);
+nor3      g6_601(_D4, n6_600, n6_602, 1'b0, clk, rst_n);
+nor3      g6_602(n6_602, n6_583, _FLD, _FLE, clk, rst_n);
+nor3      g6_603(n6_603, n6_583, _FLD, _FLF, clk, rst_n);
+nor3      g6_604(_D3, n6_603, n6_605, 1'b0, clk, rst_n);
+nor3      g6_605(n6_605, n6_584, n6_587, _FLE, clk, rst_n);
+nor3      g6_606(n6_606, n6_584, _FLD, _FLF, clk, rst_n);
+nor3      g6_607(_D2, n6_606, n6_608, 1'b0, clk, rst_n);
+nor3      g6_608(n6_608, n6_583, n6_587, _FLE, clk, rst_n);
+nor3      g6_609(n6_609, n6_584, _FLD, _FLE, clk, rst_n);
+nor3      g6_610(_D1, n6_609, n6_611, 1'b0, clk, rst_n);
+nor3      g6_611(n6_611, n6_583, n6_587, _FLF, clk, rst_n);
 
 // Coarse logic
-nor3      g6_612(rst_n, _XP15, _XP14, _XP13_n, n6_612);
-nor2      g6_613(rst_n, n6_612, n6_621, _DC8);
-nor2      g6_614(rst_n, n6_612, n6_615, _DC4);
-nor3      g6_615(rst_n, _XP15_n, _XP14_n, _XP13, n6_615);
-nor2      g6_616(rst_n, n6_615, n6_623, _DC6);
-nor3      g6_617(rst_n, _XP15, _XP14, _XP13, n6_617);
-nor2      g6_618(rst_n, n6_617, n6_619, _DC3);
-nor3      g6_619(rst_n, _XP15_n, _XP14_n, _XP13_n, n6_619);
-nor2      g6_620(rst_n, n6_617, _RSETB, _DC7);
-nor3      g6_621(rst_n, _XP15, _XP14_n, _XP13, n6_621);
-nor2      g6_622(rst_n, n6_621, n6_623, _DC2);
-nor3      g6_623(rst_n, _XP15_n, _XP14, _XP13_n, n6_623);
-nor3      g6_624(rst_n, _XP15, _XP14_n, _XP13_n, _RSETB);
-nor2      g6_625(rst_n, _RSETB, n6_626, _DC1);
-nor3      g6_626(rst_n, _XP15_n, _XP14, _XP13, n6_626);
-nor2      g6_627(rst_n, n6_619, n6_626, _DC5);
+nor3      g6_612(n6_612, _XP15, _XP14, _XP13_n, clk, rst_n);
+nor3      g6_613(_DC8, n6_612, n6_621, 1'b0, clk, rst_n);
+nor3      g6_614(_DC4, n6_612, n6_615, 1'b0, clk, rst_n);
+nor3      g6_615(n6_615, _XP15_n, _XP14_n, _XP13, clk, rst_n);
+nor3      g6_616(_DC6, n6_615, n6_623, 1'b0, clk, rst_n);
+nor3      g6_617(n6_617, _XP15, _XP14, _XP13, clk, rst_n);
+nor3      g6_618(_DC3, n6_617, n6_619, 1'b0, clk, rst_n);
+nor3      g6_619(n6_619, _XP15_n, _XP14_n, _XP13_n, clk, rst_n);
+nor3      g6_620(_DC7, n6_617, _RSETB, 1'b0, clk, rst_n);
+nor3      g6_621(n6_621, _XP15, _XP14_n, _XP13, clk, rst_n);
+nor3      g6_622(_DC2, n6_621, n6_623, 1'b0, clk, rst_n);
+nor3      g6_623(n6_623, _XP15_n, _XP14, _XP13_n, clk, rst_n);
+nor3      g6_624(_RSETB, _XP15, _XP14_n, _XP13_n, clk, rst_n);
+nor3      g6_625(_DC1, _RSETB, n6_626, 1'b0, clk, rst_n);
+nor3      g6_626(n6_626, _XP15_n, _XP14, _XP13, clk, rst_n);
+nor3      g6_627(_DC5, n6_619, n6_626, 1'b0, clk, rst_n);
 
 // Pulse out
-nor2      g6_629(rst_n, n6_423, n6_426, _DEL2H);
+nor3      g6_629(_DEL2H, n6_423, n6_426, 1'b0, clk, rst_n);
 
 endmodule
 `default_nettype wire
+

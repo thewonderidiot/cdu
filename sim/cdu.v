@@ -2,6 +2,7 @@
 `default_nettype none
 
 module cdu(
+    input wire clk,
     input wire rst_n,
 
     input wire CLOCKH,
@@ -179,6 +180,7 @@ mode x01(
 );
 
 digital_mode x02(
+    .clk(clk),
     .rst_n(rst_n),
     ._51KPHI(_51KPHI),
     .FAZ2HI(FAZ2HI),
@@ -264,6 +266,7 @@ da_converter s13(
 );
 
 error_angle s14(
+    .clk(clk),
     .rst_n(rst_n),
     .FAZ1HI(FAZ1HI),
     .FAZ2HI(FAZ2HI),
@@ -342,6 +345,7 @@ coarse s15(
 );
 
 read_counter s16(
+    .clk(clk),
     .rst_n(rst_n),
     .FAZ2HI_n(FAZ2HI_n),
     .FAZ3HI(FAZ3HI),

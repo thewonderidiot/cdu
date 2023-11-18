@@ -9,9 +9,7 @@ MODULES = interrogate\
 	  da_converter\
 
 
-COMPONENTS = nor1\
-	     nor2\
-	     nor3\
+COMPONENTS = nor3
 
 
 MODULE_SOURCES = $(addsuffix .v, $(addprefix modules/, $(MODULES)))
