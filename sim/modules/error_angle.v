@@ -262,17 +262,17 @@ wire _JMPDN;
 /*-----------------------------------------------------------------------------.
 | Gates                                                                        |
 '-----------------------------------------------------------------------------*/
-nor3      g6_001(n6_001, _REF1H, 1'b0, 1'b0, clk, rst_n);
-nor3 #(1) g6_002(n6_002, n6_001, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_001(n6_001, _REF1H, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_002(n6_002, n6_001, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_003(n6_003, n6_001, n6_035, 1'b0, clk, rst_n);
-nor3 #(1) g6_004(n6_004, n6_035, n6_002, 1'b0, clk, rst_n);
+nor3      g6_004(n6_004, n6_035, n6_002, 1'b0, clk, rst_n);
 nor3 #(1) g6_005(n6_005, n6_003, n6_006, 1'b0, clk, rst_n);
 nor3      g6_006(n6_006, n6_005, n6_004, 1'b0, clk, rst_n);
-nor3 #(1) g6_007(n6_007, n6_005, FAZ2HI, 1'b0, clk, rst_n);
+nor3      g6_007(n6_007, n6_005, FAZ2HI, 1'b0, clk, rst_n);
 nor3      g6_008(n6_008, FAZ2HI, n6_006, 1'b0, clk, rst_n);
 nor3 #(1) g6_009(n6_009, n6_007, n6_010, 1'b0, clk, rst_n);
 nor3      g6_010(n6_010, n6_009, n6_008, _AO, clk, rst_n);
-nor3      g6_011(_UPLVL, n6_010, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_011(_UPLVL, n6_010, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_012(_DNLVL, n6_009, 1'b0, 1'b0, clk, rst_n);
 //nor3    g6_013(_UPLVL, n6_010, 1'b0, 1'b0, clk, rst_n);
 //nor3    g6_014(_DNLVL, n6_009, 1'b0, 1'b0, clk, rst_n);
@@ -282,12 +282,12 @@ nor3      g6_012(_DNLVL, n6_009, 1'b0, 1'b0, clk, rst_n);
 //nor3    g6_018(_DNLVL, n6_009, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_019(_mPGH, _DNLVL, _DEL0H, 1'b0, clk, rst_n);
 nor3      g6_020(_pPGH, _UPLVL, _DEL0H, 1'b0, clk, rst_n);
-nor3      g6_021(_TPUG, _DNLVL, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_022(n6_022, _TLF1H, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_023(n6_023, _TLC1H, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_024(_TPF2, _TLF2H, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_025(_TPF1, _TLF1H, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_026(_TPC1, _TLC1H, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_021(_TPUG, _DNLVL, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_022(n6_022, _TLF1H, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_023(n6_023, _TLC1H, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_024(_TPF2, _TLF2H, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_025(_TPF1, _TLF1H, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_026(_TPC1, _TLC1H, 1'b0, 1'b0, clk, rst_n);
 nor3 #(1) g6_027(n6_027, ___IHI, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_028(n6_028, n6_023, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_029(n6_029, n6_028, n6_070, n6_027, clk, rst_n);
@@ -310,8 +310,8 @@ nor3      g6_045(n6_045, n6_041, n6_046, 1'b0, clk, rst_n);
 nor3 #(1) g6_046(n6_046, n6_045, n6_048, 1'b0, clk, rst_n);
 nor3      g6_047(n6_047, _800LHI, n6_046, 1'b0, clk, rst_n);
 nor3      g6_048(n6_048, n6_042, ___I2H, 1'b0, clk, rst_n);
-nor3      g6_049(n6_049, n6_047, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_050(n6_050, n6_048, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_049(n6_049, n6_047, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_050(n6_050, n6_048, 1'b0, 1'b0, clk, rst_n);
 nor3 #(1) g6_051(n6_051, n6_044, n6_052, 1'b0, clk, rst_n);
 nor3      g6_052(n6_052, n6_051, n6_067, 1'b0, clk, rst_n);
 nor3      g6_053(n6_053, n6_050, n6_051, _AO, clk, rst_n);
@@ -321,10 +321,10 @@ nor3 #(1) g6_056(n6_056, _AO, n6_053, n6_057, clk, rst_n);
 nor3      g6_057(n6_057, n6_056, n6_054, 1'b0, clk, rst_n);
 nor3      g6_058(n6_058, FAZ4CA, n6_056, 1'b0, clk, rst_n);
 nor3      g6_059(n6_059, n6_057, n6_049, 1'b0, clk, rst_n);
-nor3      g6_060(n6_060, n6_058, n6_059, 1'b0, clk, rst_n);
+nor3 #(1) g6_060(n6_060, n6_058, n6_059, 1'b0, clk, rst_n);
 nor3      g6_061(n6_061, _INHRC, n6_060, n6_221, clk, rst_n);
-nor3      g6_062(_PIHI, n6_061, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_063(_TPPI, n6_061, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_062(_PIHI, n6_061, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_063(_TPPI, n6_061, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_064(n6_064, ___I2H, n6_071, 1'b0, clk, rst_n);
 nor3      g6_065(n6_065, n6_064, n6_066, 1'b0, clk, rst_n);
 nor3 #(1) g6_066(n6_066, n6_065, n6_030, 1'b0, clk, rst_n);
@@ -344,7 +344,7 @@ nor3      g6_085(n6_085, _JMPPE, n6_082, 1'b0, clk, rst_n);
 nor3      g6_086(n6_086, _JMPPE, n6_082, _JMPUP, clk, rst_n);
 nor3 #(1) g6_087(n6_087, n6_084, n6_088, 1'b0, clk, rst_n);
 nor3      g6_088(n6_088, n6_087, n6_085, _EEC, clk, rst_n);
-nor3      g6_089(n6_089, n6_083, n6_086, 1'b0, clk, rst_n);
+nor3 #(1) g6_089(n6_089, n6_083, n6_086, 1'b0, clk, rst_n);
 
 // Bit 1
 nor3      g6_090(n6_090, n6_097, FAZ3HI, 1'b0, clk, rst_n);
@@ -356,7 +356,7 @@ nor3      g6_095(n6_095, n6_089, n6_092, 1'b0, clk, rst_n);
 nor3      g6_096(n6_096, n6_089, n6_092, _JMPUP, clk, rst_n);
 nor3 #(1) g6_097(n6_097, n6_094, n6_098, 1'b0, clk, rst_n);
 nor3      g6_098(n6_098, n6_097, n6_095, _EEC, clk, rst_n);
-nor3      g6_099(n6_099, n6_093, n6_096, 1'b0, clk, rst_n);
+nor3 #(1) g6_099(n6_099, n6_093, n6_096, 1'b0, clk, rst_n);
 
 // Bit 2
 nor3      g6_100(n6_100, n6_107, FAZ3HI, 1'b0, clk, rst_n);
@@ -368,7 +368,7 @@ nor3      g6_105(n6_105, n6_099, n6_102, 1'b0, clk, rst_n);
 nor3      g6_106(n6_106, n6_099, n6_102, _JMPUP, clk, rst_n);
 nor3 #(1) g6_107(n6_107, n6_104, n6_108, 1'b0, clk, rst_n);
 nor3      g6_108(n6_108, n6_107, n6_105, _EEC, clk, rst_n);
-nor3      g6_109(n6_109, n6_103, n6_106, 1'b0, clk, rst_n);
+nor3 #(1) g6_109(n6_109, n6_103, n6_106, 1'b0, clk, rst_n);
 
 // Bit 3
 nor3      g6_110(n6_110, n6_117, FAZ3HI, 1'b0, clk, rst_n);
@@ -380,7 +380,7 @@ nor3      g6_115(n6_115, n6_109, n6_112, 1'b0, clk, rst_n);
 nor3      g6_116(n6_116, n6_109, n6_112, _JMPUP, clk, rst_n);
 nor3 #(1) g6_117(n6_117, n6_114, n6_118, 1'b0, clk, rst_n);
 nor3      g6_118(n6_118, n6_117, n6_115, _EEC, clk, rst_n);
-nor3      g6_119(n6_119, n6_113, n6_116, 1'b0, clk, rst_n);
+nor3 #(1) g6_119(n6_119, n6_113, n6_116, 1'b0, clk, rst_n);
 
 // Bit 4
 nor3      g6_120(n6_120, n6_127, FAZ3HI, 1'b0, clk, rst_n);
@@ -392,7 +392,7 @@ nor3      g6_125(n6_125, n6_119, n6_122, 1'b0, clk, rst_n);
 nor3      g6_126(n6_126, n6_119, n6_122, _JMPUP, clk, rst_n);
 nor3 #(1) g6_127(n6_127, n6_124, n6_128, 1'b0, clk, rst_n);
 nor3      g6_128(n6_128, n6_127, n6_125, _EEC, clk, rst_n);
-nor3      g6_129(n6_129, n6_123, n6_126, 1'b0, clk, rst_n);
+nor3 #(1) g6_129(n6_129, n6_123, n6_126, 1'b0, clk, rst_n);
 
 // Bit 5
 nor3      g6_130(n6_130, n6_137, FAZ3HI, 1'b0, clk, rst_n);
@@ -404,7 +404,7 @@ nor3      g6_135(n6_135, n6_129, n6_132, 1'b0, clk, rst_n);
 nor3      g6_136(n6_136, n6_129, n6_132, _JMPUP, clk, rst_n);
 nor3 #(1) g6_137(n6_137, n6_134, n6_138, 1'b0, clk, rst_n);
 nor3      g6_138(n6_138, n6_137, n6_135, _EEC, clk, rst_n);
-nor3      g6_139(n6_139, n6_133, n6_136, 1'b0, clk, rst_n);
+nor3 #(1) g6_139(n6_139, n6_133, n6_136, 1'b0, clk, rst_n);
 
 // Bit 6
 nor3      g6_140(n6_140, n6_147, FAZ3HI, 1'b0, clk, rst_n);
@@ -416,7 +416,7 @@ nor3      g6_145(n6_145, n6_139, n6_142, 1'b0, clk, rst_n);
 nor3      g6_146(n6_146, n6_139, n6_142, _JMPUP, clk, rst_n);
 nor3 #(1) g6_147(n6_147, n6_144, n6_148, 1'b0, clk, rst_n);
 nor3      g6_148(n6_148, n6_147, n6_145, _EEC, clk, rst_n);
-nor3      g6_149(n6_149, n6_143, n6_146, 1'b0, clk, rst_n);
+nor3 #(1) g6_149(n6_149, n6_143, n6_146, 1'b0, clk, rst_n);
 
 // Bit 7
 nor3      g6_150(n6_150, n6_157, FAZ3HI, 1'b0, clk, rst_n);
@@ -428,7 +428,7 @@ nor3      g6_155(n6_155, n6_149, n6_152, 1'b0, clk, rst_n);
 nor3      g6_156(n6_156, n6_149, n6_152, _JMPUP, clk, rst_n);
 nor3 #(1) g6_157(n6_157, n6_154, n6_158, 1'b0, clk, rst_n);
 nor3      g6_158(n6_158, n6_157, n6_155, _EEC, clk, rst_n);
-nor3      g6_159(n6_159, n6_153, n6_156, 1'b0, clk, rst_n);
+nor3 #(1) g6_159(n6_159, n6_153, n6_156, 1'b0, clk, rst_n);
 
 // Bit 8
 nor3      g6_160(n6_160, n6_165, FAZ3HI, 1'b0, clk, rst_n);
@@ -439,15 +439,15 @@ nor3      g6_164(n6_164, n6_162, n6_159, 1'b0, clk, rst_n);
 nor3 #(1) g6_165(n6_165, n6_163, n6_166, 1'b0, clk, rst_n);
 nor3      g6_166(n6_166, n6_165, n6_164, _EEC, clk, rst_n);
 
-nor3      g6_167(_DD8, n6_166, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_168(_DD0, n6_088, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_169(_DD1, n6_098, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_170(_DD2, n6_108, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_171(_DD3, n6_118, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_172(_DD4, n6_128, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_173(_DD5, n6_138, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_174(_DD6, n6_148, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_175(_DD7, n6_158, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_167(_DD8, n6_166, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_168(_DD0, n6_088, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_169(_DD1, n6_098, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_170(_DD2, n6_108, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_171(_DD3, n6_118, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_172(_DD4, n6_128, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_173(_DD5, n6_138, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_174(_DD6, n6_148, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_175(_DD7, n6_158, 1'b0, 1'b0, clk, rst_n);
 
 nor3 #(1) g6_176(n6_176, n6_088, n6_098, n6_108, clk, rst_n);
 nor3 #(1) g6_177(n6_177, n6_118, n6_128, n6_138, clk, rst_n);
@@ -463,22 +463,22 @@ nor3      g6_184(n6_184, n6_181, FAZ1HI, 1'b0, clk, rst_n);
 nor3      g6_185(n6_185, n6_183, n6_186, 1'b0, clk, rst_n);
 nor3 #(1) g6_186(n6_186, n6_185, n6_184, 1'b0, clk, rst_n);
 nor3      g6_187(n6_187, n6_186, FAZ2HI, 1'b0, clk, rst_n);
-nor3      g6_188(n6_188, n6_187, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_188(n6_188, n6_187, 1'b0, 1'b0, clk, rst_n);
 nor3 #(1) g6_189(n6_189, _pPCH, n6_190, 1'b0, clk, rst_n);
 nor3      g6_190(n6_190, n6_189, _mPCH, 1'b0, clk, rst_n);
 nor3      g6_191(n6_191, n6_189, n6_188, 1'b0, clk, rst_n);
 nor3      g6_192(n6_192, n6_188, n6_190, 1'b0, clk, rst_n);
-nor3      g6_193(n6_193, n6_008, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_194(n6_194, n6_007, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_193(n6_193, n6_008, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_194(n6_194, n6_007, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_195(n6_195, n6_185, n6_193, _CA, clk, rst_n);
 nor3      g6_196(n6_196, n6_185, n6_194, _CA, clk, rst_n);
-nor3      g6_197(n6_197, n6_191, n6_195, 1'b0, clk, rst_n);
-nor3      g6_198(n6_198, n6_192, n6_196, 1'b0, clk, rst_n);
+nor3 #(1) g6_197(n6_197, n6_191, n6_195, 1'b0, clk, rst_n);
+nor3 #(1) g6_198(n6_198, n6_192, n6_196, 1'b0, clk, rst_n);
 nor3      g6_199(n6_199, n6_197, n6_201, 1'b0, clk, rst_n);
 nor3      g6_200(n6_200, n6_201, n6_198, 1'b0, clk, rst_n);
 nor3      g6_201(n6_201, _JMPZD, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_202(_mDAPL, n6_204, 1'b0, 1'b0, clk, rst_n);
-nor3      g6_203(_pDAPL, n6_205, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_203(_pDAPL, n6_205, 1'b0, 1'b0, clk, rst_n);
 nor3 #(1) g6_204(n6_204, n6_199, n6_205, 1'b0, clk, rst_n);
 nor3      g6_205(n6_205, n6_204, n6_200, 1'b0, clk, rst_n);
 nor3      g6_206(n6_206, n6_197, n6_204, 1'b0, clk, rst_n);
@@ -487,7 +487,7 @@ nor3      g6_208(n6_208, n6_204, n6_198, _JMPZD, clk, rst_n);
 nor3      g6_209(n6_209, _JMPZD, n6_205, n6_197, clk, rst_n);
 nor3      g6_210(n6_210, n6_206, n6_207, n6_211, clk, rst_n);
 nor3 #(1) g6_211(n6_211, n6_210, n6_208, n6_209, clk, rst_n);
-nor3      g6_212(_JMPDN, _JMPUP, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_212(_JMPDN, _JMPUP, 1'b0, 1'b0, clk, rst_n);
 //nor3    g6_213(_JMPDN, _JMPUP, 1'b0, 1'b0, clk, rst_n);
 //nor3    g6_214(_JMPDN, _JMPUP, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_215(_JMPUP, n6_211, 1'b0, 1'b0, clk, rst_n);
@@ -495,14 +495,14 @@ nor3      g6_215(_JMPUP, n6_211, 1'b0, 1'b0, clk, rst_n);
 //nor3    g6_217(_JMPUP, n6_211, 1'b0, 1'b0, clk, rst_n);
 nor3 #(1) g6_218(n6_218, n6_187, n6_219, 1'b0, clk, rst_n);
 nor3      g6_219(n6_219, n6_218, n6_180, _JMPSD, clk, rst_n);
-nor3      g6_220(n6_220, n6_185, n6_219, 1'b0, clk, rst_n);
+nor3 #(1) g6_220(n6_220, n6_185, n6_219, 1'b0, clk, rst_n);
 nor3      g6_221(n6_221, _CA, _JMPSD, n6_220, clk, rst_n);
 nor3      g6_222(n6_222, FAZ4CA, n6_218, _EEC, clk, rst_n);
 nor3      g6_223(n6_223, _EEC, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_224(n6_224, _DEL2H, _CA, _JMPSD, clk, rst_n);
 assign n6_2234 = n6_223 & n6_224;
-nor3      g6_225(_JMPPE, n6_222, n6_2234, 1'b0, clk, rst_n);
-nor3      g6_226(_TPAD, _ADHI, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_225(_JMPPE, n6_222, n6_2234, 1'b0, clk, rst_n);
+nor3 #(1) g6_226(_TPAD, _ADHI, 1'b0, 1'b0, clk, rst_n);
 
 endmodule
 `default_nettype wire
