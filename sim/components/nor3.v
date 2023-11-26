@@ -17,31 +17,16 @@ parameter iv = 1'b0;
 `ifdef TARGET_FPGA
 
 reg yc;
-reg yp;
-reg yn;
-
 initial yc = iv;
-initial yp = iv;
-
-assign y = yc;
-
-always @(*) begin
-    if ((y != yp) & (y == iv)) begin
-        yn = iv;
-    end else begin
-        yn = ~(a | b | c);
-    end
-end
 
 always @(posedge clk) begin
     if (~rst_n) begin
         yc <= iv;
-        yp <= iv;
     end else begin
-        yp <= y;
-        yc <= yn;
+        yc <= ~(a | b | c);
     end
 end
+assign y = yc;
 
 `else
 

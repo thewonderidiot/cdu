@@ -29,10 +29,15 @@ module mode(
 /*-----------------------------------------------------------------------------.
 | Phase buffer circuits                                                        |
 '-----------------------------------------------------------------------------*/
-assign #10 FAZ2HI = ~FAZ2DR;
-assign #10 FAZ2HI_n = ~FAZ2DR_n;
-assign #10 FAZ3HI = ~FAZ3DR;
-assign #10 FAZ4HI = ~FAZ4DR;
+`ifdef TARGET_FPGA
+`define PHASE_DELAY
+`else
+`define PHASE_DELAY #10
+`endif
+assign `PHASE_DELAY FAZ2HI = ~FAZ2DR;
+assign `PHASE_DELAY FAZ2HI_n = ~FAZ2DR_n;
+assign `PHASE_DELAY FAZ3HI = ~FAZ3DR;
+assign `PHASE_DELAY FAZ4HI = ~FAZ4DR;
 
 /*-----------------------------------------------------------------------------.
 | Moding buffer circuits                                                       |

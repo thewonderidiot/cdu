@@ -2,6 +2,7 @@
 `default_nettype none
 
 module quadrant_selector(
+    input wire clk,
     input wire rst_n,
     input wire real _FSINH,
     input wire real _FCOSH,
@@ -97,8 +98,19 @@ assign s4c = _S4COS * (25e3 / 128.146e3);
 assign a5 = -(s1s + s2s + s3s + s4s + s14);
 assign a6 = -(s1c + s2c + s3c + s4c + s11);
 
+`ifdef TARGET_FPGA
+real s11r;
+real s14r;
+always @(posedge clk) begin
+    s11r <= _D11 ? 0.0 : a5;
+    s14r <= ~_D11 ? 0.0 : a6; // Actually controlled by _D14
+end
+assign s11 = s11r;
+assign s14 = s14r;
+`else
 assign s11 = _D11 ? 0.0 : a5;
 assign s14 = ~_D11 ? 0.0 : a6; // Actually controlled by _D14
+`endif
 
 assign _1125A = _D9  ? 0.0 : a5;
 assign _S10   = _D10 ? 0.0 : a5;

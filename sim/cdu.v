@@ -227,6 +227,7 @@ digital_mode x02(
 );
 
 interrogate x03(
+    .clk(clk),
     .rst_n(rst_n),
     .CLOCKH(CLOCKH),
     .U28RFH(U28RFH),
@@ -396,6 +397,7 @@ read_counter s16(
 );
 
 quadrant_selector s17(
+    .clk(clk),
     .rst_n(rst_n),
     ._FSINH(AFSINH),
     ._FCOSH(AFCOSH),
