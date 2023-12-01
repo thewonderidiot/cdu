@@ -9,7 +9,8 @@ MODULES = interrogate\
 	  da_converter\
 
 
-COMPONENTS = nor3
+COMPONENTS = nor3 \
+	     schmitt
 
 
 MODULE_SOURCES = $(addsuffix .v, $(addprefix modules/, $(MODULES)))

@@ -112,8 +112,8 @@ assign _MTPA = fine_error;
 /*-----------------------------------------------------------------------------.
 | Schmitt Triggers                                                             |
 '-----------------------------------------------------------------------------*/
-assign _TLF2H = (fine_error > 1.2*$sqrt(2));
-assign _TLF1H = (fine_error > 0.07*$sqrt(2));
+schmitt #(1.2*$sqrt(2), 0.925) high_ternary(_TLF2H, fine_error);
+schmitt #(0.071*$sqrt(2), 0.053) fine_ternary(_TLF1H, fine_error);
 
 endmodule
 `default_nettype wire
