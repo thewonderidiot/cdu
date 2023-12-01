@@ -28,7 +28,7 @@ initial begin
     ISSIHI = 0;
 end
 
-`ifdef TARGET_FPGA
+`ifdef TARGET_WEB
 reg [10:0] int_count;
 reg UREF1H_delay;
 initial begin

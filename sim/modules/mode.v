@@ -29,7 +29,7 @@ module mode(
 /*-----------------------------------------------------------------------------.
 | Phase buffer circuits                                                        |
 '-----------------------------------------------------------------------------*/
-`ifdef TARGET_FPGA
+`ifdef TARGET_WEB
 `define PHASE_DELAY
 `else
 `define PHASE_DELAY #10

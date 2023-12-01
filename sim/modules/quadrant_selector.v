@@ -98,7 +98,7 @@ assign s4c = _S4COS * (25e3 / 128.146e3);
 assign a5 = -(s1s + s2s + s3s + s4s + s14);
 assign a6 = -(s1c + s2c + s3c + s4c + s11);
 
-`ifdef TARGET_FPGA
+`ifdef TARGET_WEB
 real s11r;
 real s14r;
 always @(posedge clk) begin
