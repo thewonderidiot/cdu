@@ -17,6 +17,7 @@ module error_angle(
     input wire _800LHI,
     input wire _INHRC,
     input wire _CA,
+    input wire _CDUZ,
     input wire _EEC,
     input wire _mPCH,
     input wire _pPCH,
@@ -46,6 +47,11 @@ module error_angle(
     output wire _DD6,
     output wire _DD7,
     output wire _DD8,
+    output wire _INHCE,
+    output wire _INHDA,
+
+    output wire F_PpHI,
+    output wire F_PmHI,
 
     output wire _TPF1,
     output wire _TPF2,
@@ -113,6 +119,7 @@ wire n6_068;
 wire n6_069;
 wire n6_070;
 wire n6_071;
+wire n6_072;
 
 wire n6_080;
 wire n6_081;
@@ -252,6 +259,7 @@ wire n6_222;
 wire n6_223;
 wire n6_224;
 wire n6_2234;
+wire n6_228;
 
 wire _JMPZD;
 wire _JMPSD;
@@ -319,7 +327,7 @@ nor3      g6_054(n6_054, _AO, n6_052, n6_050, clk, rst_n);
 
 nor3 #(1) g6_056(n6_056, _AO, n6_053, n6_057, clk, rst_n);
 nor3      g6_057(n6_057, n6_056, n6_054, 1'b0, clk, rst_n);
-nor3      g6_058(n6_058, FAZ4CA, n6_056, 1'b0, clk, rst_n);
+nor3      g6_058(n6_058, FAZ4CA, n6_056, 1'b0, clk, rst_n); // FAZ4HI for RR
 nor3      g6_059(n6_059, n6_057, n6_049, 1'b0, clk, rst_n);
 nor3 #(1) g6_060(n6_060, n6_058, n6_059, 1'b0, clk, rst_n);
 nor3      g6_061(n6_061, _INHRC, n6_060, n6_221, clk, rst_n);
@@ -333,6 +341,8 @@ nor3      g6_068(n6_068, n6_065, ___I3H, 1'b0, clk, rst_n);
 nor3      g6_069(n6_069, ___I3H, n6_066, 1'b0, clk, rst_n);
 nor3      g6_070(n6_070, n6_068, n6_071, 1'b0, clk, rst_n);
 nor3 #(1) g6_071(n6_071, n6_070, n6_069, 1'b0, clk, rst_n);
+nor3 #(1) g6_072(n6_072, 1'b0, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_073(_INHDA, n6_072, 1'b0, 1'b0, clk, rst_n);
 
 // Bit 0
 nor3      g6_080(n6_080, n6_087, FAZ3HI, 1'b0, clk, rst_n);
@@ -497,13 +507,29 @@ nor3 #(1) g6_218(n6_218, n6_187, n6_219, 1'b0, clk, rst_n);
 nor3      g6_219(n6_219, n6_218, n6_180, _JMPSD, clk, rst_n);
 nor3 #(1) g6_220(n6_220, n6_185, n6_219, 1'b0, clk, rst_n);
 nor3      g6_221(n6_221, _CA, _JMPSD, n6_220, clk, rst_n);
-nor3      g6_222(n6_222, FAZ4CA, n6_218, _EEC, clk, rst_n);
+nor3      g6_222(n6_222, FAZ4CA, n6_218, _EEC, clk, rst_n); // FAZ4HI for RR
 nor3      g6_223(n6_223, _EEC, 1'b0, 1'b0, clk, rst_n);
 nor3      g6_224(n6_224, _DEL2H, _CA, _JMPSD, clk, rst_n);
 assign n6_2234 = n6_223 & n6_224;
 nor3 #(1) g6_225(_JMPPE, n6_222, n6_2234, 1'b0, clk, rst_n);
 nor3 #(1) g6_226(_TPAD, _ADHI, 1'b0, 1'b0, clk, rst_n);
+nor3 #(1) g6_227(_INHCE, _CDUZ, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_228(n6_228, _UPLVL, 1'b0, 1'b0, clk, rst_n);
+nor3      g6_229(F_PmHI, n6_228, _DEL0H, 1'b0, clk, rst_n);
+nor3      g6_230(F_PpHI, _DEL0H, _UPLVL, 1'b0, clk, rst_n);
+
+// Spares
+//nor3    g6_231(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_232(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_233(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_234(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_235(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_236(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_237(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_238(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_239(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_240(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_241(SPO, SPI, SPI, 1'b0, clk, rst_n);
 
 endmodule
 `default_nettype wire
-

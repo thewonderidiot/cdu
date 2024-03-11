@@ -50,7 +50,8 @@ module read_counter(
     output wire _D18,
     output wire _D19,
     output wire _D20,
-    output wire _D21
+    output wire _D21,
+    output wire _D22
 );
 
 /*-----------------------------------------------------------------------------.
@@ -163,7 +164,6 @@ wire n6_495;
 wire n6_496;
 wire n6_497;
 wire n6_498;
-wire n6_499;
 
 wire n6_500;
 wire n6_501;
@@ -253,6 +253,8 @@ wire n6_619;
 wire n6_621;
 wire n6_623;
 wire n6_626;
+
+wire _DEL9;
 
 wire _XP13;
 wire _XP13_n;
@@ -390,16 +392,16 @@ nor3      g6_495(n6_495, n6_489, n6_492, 1'b0, clk, rst_n);
 nor3      g6_496(n6_496, n6_489, n6_492, _UPLVL, clk, rst_n);
 nor3 #(1) g6_497(n6_497, n6_494, n6_498, 1'b0, clk, rst_n);
 nor3      g6_498(n6_498, n6_497, n6_495, _CDUZ, clk, rst_n);
-nor3 #(1) g6_499(n6_499, n6_493, n6_496, 1'b0, clk, rst_n);
+nor3 #(1) g6_499(_DEL9, n6_493, n6_496, 1'b0, clk, rst_n);
 
 // Bit 10
 nor3      g6_500(n6_500, n6_507, FAZ3HI, 1'b0, clk, rst_n);
 nor3      g6_501(n6_501, FAZ2HI_n, n6_502, 1'b0, clk, rst_n);
 nor3 #(1) g6_502(n6_502, n6_501, n6_500, 1'b0, clk, rst_n);
-nor3      g6_503(n6_503, _DNLVL, n6_501, n6_499, clk, rst_n);
-nor3      g6_504(n6_504, n6_501, n6_499, 1'b0, clk, rst_n);
-nor3      g6_505(n6_505, n6_499, n6_502, 1'b0, clk, rst_n);
-nor3      g6_506(n6_506, n6_499, n6_502, _UPLVL, clk, rst_n);
+nor3      g6_503(n6_503, _DNLVL, n6_501, _DEL9, clk, rst_n);
+nor3      g6_504(n6_504, n6_501, _DEL9, 1'b0, clk, rst_n);
+nor3      g6_505(n6_505, _DEL9, n6_502, 1'b0, clk, rst_n);
+nor3      g6_506(n6_506, _DEL9, n6_502, _UPLVL, clk, rst_n);
 nor3 #(1) g6_507(n6_507, n6_504, n6_508, 1'b0, clk, rst_n);
 nor3      g6_508(n6_508, n6_507, n6_505, _CDUZ, clk, rst_n);
 nor3 #(1) g6_509(n6_509, n6_503, n6_506, 1'b0, clk, rst_n);
@@ -542,8 +544,23 @@ nor3 #(1) g6_625(_DC1, _RSETB, n6_626, 1'b0, clk, rst_n);
 nor3      g6_626(n6_626, _XP15_n, _XP14, _XP13, clk, rst_n);
 nor3      g6_627(_DC5, n6_619, n6_626, 1'b0, clk, rst_n);
 
+// Least switch disable
+nor3 #(1) g6_628(_D22, 1'b0, 1'b0, 1'b0, clk, rst_n);
+
 // Pulse out
 nor3 #(1) g6_629(_DEL2H, n6_423, n6_426, 1'b0, clk, rst_n);
+
+// Optics trunnion only
+//nor3    g6_630(_D7, n6_528, 1'b0, 1'b0, clk, rst_n);
+
+// Spare gates
+//nor3    g6_631(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_632(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_633(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_634(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_635(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_636(SPO, SPI, SPI, 1'b0, clk, rst_n);
+//nor3    g6_637(SPO, SPI, SPI, 1'b0, clk, rst_n);
 
 endmodule
 `default_nettype wire

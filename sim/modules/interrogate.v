@@ -6,9 +6,12 @@ module interrogate(
     input wire rst_n,
     input wire CLOCKH,
     input wire real U28RFH,
+    input wire real O28RFH,
     output wire _51KPHI,
     output wire UREF1H,
-    output reg ISSIHI
+    output reg ISSIHI,
+    output wire SREF1H,
+    output reg SHIHI
 );
 
 /*-----------------------------------------------------------------------------.
@@ -57,6 +60,27 @@ end
 always @(posedge UREF1H or negedge UREF1H) begin
     #311000 ISSIHI = 1;
     #3000 ISSIHI = 0;
+end
+
+`endif
+
+/*-----------------------------------------------------------------------------.
+| Shaft Reference Generator                                                    |
+'-----------------------------------------------------------------------------*/
+assign SREF1H = (O28RFH <= 0.0);
+
+/*-----------------------------------------------------------------------------.
+| ISS Interrogate Generator                                                    |
+'-----------------------------------------------------------------------------*/
+initial begin
+    SHIHI = 0;
+end
+
+`ifndef TARGET_WEB
+
+always @(posedge SREF1H or negedge SREF1H) begin
+    #311000 SHIHI = 1;
+    #3000 SHIHI = 0;
 end
 
 `endif

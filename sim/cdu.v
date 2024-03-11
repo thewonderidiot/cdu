@@ -7,10 +7,15 @@ module cdu(
 
     input wire CLOCKH,
     input wire real U28RFH,
+    input wire real O28RFH,
 
     input wire AGCCA,
     input wire AGCZ,
     input wire AGCEEC,
+
+    input wire AGCDAE,
+    input wire AGCRRZ,
+    input wire AGCTVC,
 
     input wire real ACSINH,
     input wire real ACCOSH,
@@ -44,6 +49,7 @@ module cdu(
 wire _51KPHI;
 wire _51KPHI_n;
 wire UREF1H;
+wire SREF1H;
 wire FAZ1HI;
 wire FAZ2DR;
 wire FAZ2DR_n;
@@ -58,6 +64,7 @@ wire PS25KH;
 wire ISSIHI;
 wire ISSI2H;
 wire ISSI3H;
+wire SHIHI;
 wire _800LHI;
 wire ISSCA;
 wire ISSZ;
@@ -65,9 +72,13 @@ wire ISSEEC;
 wire ISSZDR;
 wire DMMCA;
 wire UINHRC;
+wire OINHRC;
+wire RRZDR;
 wire ACDUZ;
 wire BCDUZ;
 wire CCDUZ;
+wire DCDUZ;
+wire ECDUZ;
 wire AUPLVL;
 wire ADNLVL;
 wire ATLC1H;
@@ -130,10 +141,27 @@ wire ADD5;
 wire ADD6;
 wire ADD7;
 wire ADD8;
+wire BAO;
 wire BCA;
 wire BEEC;
+wire BQ;
+wire CAO;
 wire CCA;
 wire CEEC;
+wire CQ;
+wire DAO;
+wire DCA;
+wire DEEC;
+wire EAO;
+wire ECA;
+wire EEEC;
+wire SHI2H;
+wire SHI3H;
+wire TRNI2H;
+wire TRNI3H;
+wire RRDAE;
+wire RRZ;
+wire TVCDCA;
 
 wire real AS10;
 wire real AS13;
@@ -164,7 +192,12 @@ mode x01(
     .AGCCA(AGCCA),
     .AGCZ(AGCZ),
     .AGCEEC(AGCEEC),
+    .AGCDAE(AGCDAE),
+    .AGCRRZ(AGCRRZ),
+    .AGCTVC(AGCTVC),
+
     .ISSZDR(ISSZDR),
+    .RRZDR(RRZDR),
 
     .FAZ2HI(FAZ2HI),
     .FAZ2HI_n(FAZ2HI_n),
@@ -174,14 +207,21 @@ mode x01(
     .ISSCA(ISSCA),
     .ISSZ(ISSZ),
     .ISSEEC(ISSEEC),
+    .RRDAE(RRDAE),
+    .RRZ(RRZ),
+    .TVCDCA(TVCDCA),
+
     .ACDUZ(ACDUZ),
     .BCDUZ(BCDUZ),
-    .CCDUZ(CCDUZ)
+    .CCDUZ(CCDUZ),
+    .DCDUZ(DCDUZ),
+    .ECDUZ(ECDUZ)
 );
 
 digital_mode x02(
     .clk(clk),
     .rst_n(rst_n),
+
     ._51KPHI(_51KPHI),
     .FAZ2HI(FAZ2HI),
     .FAZ2HI_n(FAZ2HI_n),
@@ -189,6 +229,8 @@ digital_mode x02(
     .FAZ4HI(FAZ4HI),
     .UREF1H(UREF1H),
     .ISSIHI(ISSIHI),
+    .SREF1H(SREF1H),
+    .SHIHI(SHIHI),
 
     ._51KPHI_n(_51KPHI_n),
     .FAZ1HI(FAZ1HI),
@@ -200,6 +242,10 @@ digital_mode x02(
     .PS25KH(PS25KH),
     .ISSI2H(ISSI2H),
     .ISSI3H(ISSI3H),
+    .SHI2H(SHI2H),
+    .SHI3H(SHI3H),
+    .TRNI2H(TRNI2H),
+    .TRNI3H(TRNI3H),
     ._800LHI(_800LHI),
 
     .ISSCA(ISSCA),
@@ -217,13 +263,41 @@ digital_mode x02(
     .ACA(ACA),
     .AEEC(AEEC),
 
+    .BADHI(1'b0),
+    .BRSETB(1'b0),
     .BCDUZ(BCDUZ),
+    .BAO(BAO),
+    .BQ(BQ),
     .BCA(BCA),
     .BEEC(BEEC),
 
+    .CADHI(1'b0),
+    .CRSETB(1'b0),
     .CCDUZ(CCDUZ),
+    .CAO(CAO),
+    .CQ(CQ),
     .CCA(CCA),
-    .CEEC(CEEC)
+    .CEEC(CEEC),
+
+    .RRDAE(RRDAE),
+    .RRZ(RRZ),
+    .TVCDCA(TVCDCA),
+
+    .RRZDR(RRZDR),
+    .OINHRC(OINHRC),
+
+    .DADHI(1'b0),
+    .DRSETB(1'b0),
+    .DCDUZ(DCDUZ),
+    .DAO(DAO),
+    .DCA(DCA),
+    .DEEC(DEEC),
+
+    .EADHI(1'b0),
+    .ERSETB(1'b0),
+    .EAO(EAO),
+    .ECA(ECA),
+    .EEEC(EEEC)
 );
 
 interrogate x03(
@@ -231,9 +305,12 @@ interrogate x03(
     .rst_n(rst_n),
     .CLOCKH(CLOCKH),
     .U28RFH(U28RFH),
+    .O28RFH(O28RFH),
     ._51KPHI(_51KPHI),
     .UREF1H(UREF1H),
-    .ISSIHI(ISSIHI)
+    .ISSIHI(ISSIHI),
+    .SREF1H(SREF1H),
+    .SHIHI(SHIHI)
 );
 
 // Inner gimbal

@@ -14,7 +14,7 @@ module nor3(
 
 parameter iv = 1'b0;
 
-`ifdef TARGET_FPGA
+`ifdef TARGET_WEB
 
 reg yc;
 initial yc = iv;

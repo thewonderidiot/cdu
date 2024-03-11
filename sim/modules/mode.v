@@ -11,7 +11,12 @@ module mode(
     input wire AGCCA,
     input wire AGCZ,
     input wire AGCEEC,
+    input wire AGCDAE,
+    input wire AGCRRZ,
+    input wire AGCTVC,
+
     input wire ISSZDR,
+    input wire RRZDR,
 
     output wire FAZ2HI,
     output wire FAZ2HI_n,
@@ -21,9 +26,15 @@ module mode(
     output wire ISSCA,
     output wire ISSZ,
     output wire ISSEEC,
+    output wire RRDAE,
+    output wire RRZ,
+    output wire TVCDCA,
+
     output wire ACDUZ,
     output wire BCDUZ,
-    output wire CCDUZ
+    output wire CCDUZ,
+    output wire DCDUZ,
+    output wire ECDUZ
 );
 
 /*-----------------------------------------------------------------------------.
@@ -45,9 +56,14 @@ assign `PHASE_DELAY FAZ4HI = ~FAZ4DR;
 assign ISSCA = ~AGCCA;
 assign ISSZ = ~AGCZ;
 assign ISSEEC = ~AGCEEC;
+assign RRDAE = ~AGCDAE;
+assign RRZ = ~AGCRRZ;
 assign ACDUZ = ~ISSZDR;
 assign BCDUZ = ~ISSZDR;
 assign CCDUZ = ~ISSZDR;
+assign DCDUZ = ~RRZDR;
+assign ECDUZ = ~RRZDR;
+assign TVCDCA = ~AGCTVC;
 
 endmodule
 `default_nettype wire
