@@ -14,6 +14,7 @@ _autosave-*
 *-save.pro
 *-save.kicad_pcb
 fp-info-cache
+~*.lck
 
 # Netlist files (exported from Eeschema)
 *.net
@@ -31,3 +32,8 @@ cdu_sim
 
 # Simulation outputs
 *.fst
+
+# Backups
+*-backups/
+*.zip
+*-bak
