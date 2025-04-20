@@ -1,0 +1,157 @@
+(footprint "Vigortronix_VTX-111"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 5.2 13.6 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "a2ebd77f-0662-4e2e-b71c-24daf1db48bc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Vigortronix_VTX-111"
+		(at 5.2 15.1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e337fe5c-595b-4bcc-8b1d-1a62e7457611")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "551834e5-b526-44cd-a4d7-86fac89aeef8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d016c2f5-fba0-4515-86de-0feeccc544cb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bb458b58-d889-45c0-b390-f00fca0cb706")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -1.4 -2.6)
+		(end -2.6 -1.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "1ad3b015-dc18-41c8-8d79-461f9246ec6e")
+	)
+	(fp_rect
+		(start -2.6 -2.6)
+		(end 12.8 12.8)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "e3f94335-f661-47f0-9546-658e0f3a5ba2")
+	)
+	(fp_rect
+		(start -2.8 -2.8)
+		(end 13 13)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "68074d72-8d49-48c5-8901-08bd17a63d2e")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 5.2 16.6 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "d1c5c870-a886-44f5-aa9c-73b3f2ea69e8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.524 1.524)
+		(drill 0.762)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1b99d1ac-a438-4b08-95a2-961ad8b72c02")
+	)
+	(pad "2" thru_hole circle
+		(at 0 10.2)
+		(size 1.524 1.524)
+		(drill 0.762)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "58dcc256-fc2a-4e1d-9b37-75c7822170d1")
+	)
+	(pad "3" thru_hole circle
+		(at 10.2 10.2)
+		(size 1.524 1.524)
+		(drill 0.762)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a2c14c55-d876-483e-bc58-786a23dbf9ec")
+	)
+	(pad "4" thru_hole circle
+		(at 10.2 0)
+		(size 1.524 1.524)
+		(drill 0.762)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5b55ad79-4a69-4a79-8b04-f7e54089d32f")
+	)
+	(model "/home/mike/cdu/boards/lib/cdu.3dshapes/VTX-111-010.step"
+		(offset
+			(xyz 5.1 -5.1 0.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
