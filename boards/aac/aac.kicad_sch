@@ -10610,7 +10610,7 @@
 				)
 			)
 		)
-		(property "Value" "3320"
+		(property "Value" "3300"
 			(at 240.03 158.75 90)
 			(effects
 				(font
@@ -11684,7 +11684,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3320"
+		(property "Value" "3300"
 			(at 247.65 213.36 0)
 			(effects
 				(font
@@ -12929,7 +12929,7 @@
 				)
 			)
 		)
-		(property "Value" "0.0033uF"
+		(property "Value" "0.033uF"
 			(at 262.382 218.44 90)
 			(effects
 				(font
@@ -13613,7 +13613,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "NOM"
+		(property "Value" "4700"
 			(at 133.35 127 0)
 			(effects
 				(font

@@ -1,0 +1,128 @@
+(footprint "E-Switch_100M2_SPDT"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 12.192 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "c9b1098b-234f-4e6d-8c0b-3d20fa413f43")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "E-Switch_100M2_SPDT"
+		(at 0 -4.548 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "fc4ed055-4782-47c3-9145-1ef008e275f0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f9063e59-55bc-4f5b-a00c-30ed2983528e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ed6ad3f6-ce02-4720-8647-6a1f6e600070")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -3.556 -1.778)
+		(end 3.556 11.176)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "7624a65e-774c-4076-a2cd-d0c66550ddc4")
+	)
+	(fp_rect
+		(start -3.6576 -1.8796)
+		(end 3.6576 11.2776)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "32c808c3-466e-4144-ab62-1b3a460b5a22")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 -3.048 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "bac4866a-e89d-4696-8dc2-9ba240d92c4f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole roundrect
+		(at 0 0)
+		(size 3.2 3.2)
+		(drill 1.85)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.078125)
+		(uuid "d2208308-a31c-45c3-aa47-e00e2ebd7de1")
+	)
+	(pad "2" thru_hole circle
+		(at 0 4.7)
+		(size 3.2 3.2)
+		(drill 1.85)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b8bacfea-2787-47e0-8f3e-fa898e69872f")
+	)
+	(pad "3" thru_hole circle
+		(at 0 9.4)
+		(size 3.2 3.2)
+		(drill 1.85)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "3fe8b8fc-5f7b-40b9-8b8c-569df291d455")
+	)
+	(embedded_fonts no)
+	(model "/home/mike/cdu/boards/lib/cdu.3dshapes/141_100SPxT1B1M2xE.stp"
+		(offset
+			(xyz 0 -4.699 8.255)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 90)
+		)
+	)
+)

@@ -85,8 +85,8 @@
 		(uuid "92ee0be3-5504-4a7c-83cf-7b6930d63a2c")
 	)
 	(fp_rect
-		(start -4.2545 -6.604)
-		(end 19.4945 26.924)
+		(start -4.2545 -7.4295)
+		(end 19.4945 26.0985)
 		(stroke
 			(width 0.1)
 			(type solid)
@@ -157,4 +157,15 @@
 		(uuid "fe04239d-8daf-4ac7-b049-a00ab84f0fe5")
 	)
 	(embedded_fonts no)
+	(model "/home/mike/cdu/boards/lib/cdu.3dshapes/109.step"
+		(offset
+			(xyz 7.62 -9.33704 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 90)
+		)
+	)
 )

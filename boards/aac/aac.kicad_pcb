@@ -2604,7 +2604,7 @@
 				)
 			)
 		)
-		(property "Value" "NOM"
+		(property "Value" "4700"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "ea4c6f0e-033a-44c2-8729-d1bbdb989cb3")
@@ -7181,7 +7181,7 @@
 				)
 			)
 		)
-		(property "Value" "3320"
+		(property "Value" "3300"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "14427e32-22ed-441f-9324-c6619c1a2640")
@@ -9606,7 +9606,7 @@
 				)
 			)
 		)
-		(property "Value" "3320"
+		(property "Value" "3300"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "df027c04-c85c-46cb-9c12-642241af4b5d")
@@ -15465,7 +15465,7 @@
 				)
 			)
 		)
-		(property "Value" "0.0033uF"
+		(property "Value" "0.033uF"
 			(at 2.5 2.5 90)
 			(layer "F.Fab")
 			(uuid "6c7bf698-8cea-4753-876e-7641f6ce01ea")
