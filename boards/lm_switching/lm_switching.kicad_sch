@@ -1887,8 +1887,8 @@
 		(uuid "fd7914dc-9826-4df1-8dee-b7e627d90ba1")
 	)
 	(no_connect
-		(at 111.76 58.42)
-		(uuid "0f31da0b-4d91-4aef-afa1-52ee693c8cf2")
+		(at 111.76 53.34)
+		(uuid "445564b7-cb5e-4926-a5be-fbdc1855de4d")
 	)
 	(no_connect
 		(at 173.99 91.44)
@@ -2180,7 +2180,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 53.34) (xy 111.76 53.34)
+			(xy 92.71 58.42) (xy 111.76 58.42)
 		)
 		(stroke
 			(width 0)
@@ -2709,7 +2709,7 @@
 		(uuid "2e494e61-0325-4e57-a1ba-ee0ff325c101")
 	)
 	(label "PGNCS_800CPS_LO"
-		(at 92.71 73.66 0)
+		(at 92.71 78.74 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2719,7 +2719,7 @@
 		(uuid "4ae5a57c-62b3-4d5f-9421-5ac08a73f273")
 	)
 	(label "RD874"
-		(at 92.71 53.34 0)
+		(at 92.71 58.42 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2729,7 +2729,7 @@
 		(uuid "51122824-28d0-4e99-b557-b6d579b819f9")
 	)
 	(label "ATCA_800CPS_HI"
-		(at 92.71 68.58 0)
+		(at 92.71 63.5 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2769,7 +2769,7 @@
 		(uuid "77b37f05-d2a5-4d14-91b7-930c230489aa")
 	)
 	(label "PGNCS_800CPS_HI"
-		(at 92.71 63.5 0)
+		(at 92.71 68.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2829,7 +2829,7 @@
 		(uuid "a1963252-8ee2-4617-88d2-fcbf82030062")
 	)
 	(label "ATCA_800CPS_LO"
-		(at 92.71 78.74 0)
+		(at 92.71 73.66 0)
 		(effects
 			(font
 				(size 1.27 1.27)
