@@ -639,10 +639,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "67a5acf1-e0ea-4189-a75d-d2ca173773d3")
+			(uuid "afa8c1c6-1ca1-477b-8fe3-08707867214b")
 		)
 		(pin "2"
-			(uuid "82a929ac-90fd-497e-a8c3-0e24f6f013cc")
+			(uuid "782aaac9-8537-4403-bd62-c366bbe521e3")
 		)
 		(instances
 			(project "agc"
@@ -668,6 +668,10 @@
 				)
 				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/c8d3b6d1-1cfd-4adf-be40-77708294480e"
 					(reference "R7")
+					(unit 1)
+				)
+				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/d422f255-d34b-4707-811e-8742f4cdf6cc"
+					(reference "R95")
 					(unit 1)
 				)
 				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/d8d7965c-9f5d-4961-b7bb-ccbff914404d"
@@ -738,10 +742,10 @@
 			)
 		)
 		(pin "2"
-			(uuid "cd5f5cc4-fbb6-4086-9fda-b33b4b368d68")
+			(uuid "2f620bb0-27f9-49a9-bb86-d679c1d9106a")
 		)
 		(pin "1"
-			(uuid "ec6414b3-bfd9-40d2-922e-57a549129049")
+			(uuid "8d21e954-a4dd-46dc-9973-95f3ea625f7a")
 		)
 		(instances
 			(project "agc"
@@ -767,6 +771,10 @@
 				)
 				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/c8d3b6d1-1cfd-4adf-be40-77708294480e"
 					(reference "R8")
+					(unit 1)
+				)
+				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/d422f255-d34b-4707-811e-8742f4cdf6cc"
+					(reference "R96")
 					(unit 1)
 				)
 				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/d8d7965c-9f5d-4961-b7bb-ccbff914404d"
@@ -839,10 +847,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "da2a370f-1ac6-4c1b-beeb-8bfc6a39d423")
+			(uuid "aa6ef9e0-c786-47bf-abaa-eca9b5688140")
 		)
 		(pin "2"
-			(uuid "9985beb0-7100-4414-bd41-4b6c6ec24e6b")
+			(uuid "2bb5a03f-6534-493d-abc9-1715a42d60e6")
 		)
 		(instances
 			(project "agc"
@@ -868,6 +876,10 @@
 				)
 				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/c8d3b6d1-1cfd-4adf-be40-77708294480e"
 					(reference "C4")
+					(unit 1)
+				)
+				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/d422f255-d34b-4707-811e-8742f4cdf6cc"
+					(reference "C16")
 					(unit 1)
 				)
 				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/d8d7965c-9f5d-4961-b7bb-ccbff914404d"
@@ -939,7 +951,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "01345b0b-ebd8-4a5f-972a-903a006a6754")
+			(uuid "0a855a2a-6711-43c8-82eb-904dbd4ac27c")
 		)
 		(instances
 			(project "agc"
@@ -965,6 +977,10 @@
 				)
 				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/c8d3b6d1-1cfd-4adf-be40-77708294480e"
 					(reference "#PWR054")
+					(unit 1)
+				)
+				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/d422f255-d34b-4707-811e-8742f4cdf6cc"
+					(reference "#PWR058")
 					(unit 1)
 				)
 				(path "/e8daa237-958e-44f5-8fdf-1aed05d7ed9a/d8d7965c-9f5d-4961-b7bb-ccbff914404d"
