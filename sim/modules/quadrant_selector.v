@@ -45,13 +45,13 @@ module quadrant_selector(
 | Sine Quadrant Selector                                                       |
 '-----------------------------------------------------------------------------*/
 wire real a1;
-assign a1 = (_D5) ? _FSINH : -_FSINH;
+assign a1 = ((_D5) ? _FSINH : -_FSINH) * (25e3 / 30e3);
 
 /*-----------------------------------------------------------------------------.
 | Cosine Quadrant Selector                                                     |
 '-----------------------------------------------------------------------------*/
 wire real a3;
-assign a3 = (_D7) ? _FCOSH : -_FCOSH;
+assign a3 = ((_D7) ? _FCOSH : -_FCOSH) * (25e3 / 30e3);
 
 /*-----------------------------------------------------------------------------.
 | MSA Switch Selection                                                         |
@@ -114,11 +114,11 @@ assign s14 = ~_D11 ? 0.0 : a6; // Actually controlled by _D14
 
 assign _1125A = _D9  ? 0.0 : a5;
 assign _S10   = _D10 ? 0.0 : a5;
-assign _BIASA = _S10 * (51/(10e3 + 51));
+assign _BIASA = _S10 * (62/(10e3 + 62));
 
 assign _1125B = _D12 ? 0.0 : a6;
 assign _S13   = _D13 ? 0.0 : a6;
-assign _BIASB = _S13 * (51/(10e3 + 51));
+assign _BIASB = _S13 * (62/(10e3 + 62));
 
 endmodule
 `default_nettype wire
