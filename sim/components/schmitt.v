@@ -6,8 +6,8 @@ module schmitt(
     input wire real a
 );
 
-parameter set_voltage = 1;
-parameter rst_voltage = 0.5;
+parameter set_voltage = 0.100;
+parameter rst_voltage = 0.053;
 
 wire set = (a >= set_voltage);
 wire rst = (a >= rst_voltage);

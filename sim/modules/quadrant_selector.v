@@ -67,7 +67,7 @@ assign _S3COS = _D3 ? 0.0 : a3;
 assign _S4COS = _D4 ? 0.0 : a3;
 
 /*-----------------------------------------------------------------------------.
-| Cos(theta-phi) Generator                                                     |
+| Cos(theta-psi) Generator                                                     |
 '-----------------------------------------------------------------------------*/
 wire real s1s;
 wire real s2s;
@@ -85,15 +85,16 @@ wire real s14;
 wire real a5;
 wire real a6;
 
-assign s1s = _S1SIN * (25e3 / 128.146e3);
-assign s2s = _S2SIN * (25e3 / 44.999e3);
-assign s3s = _S3SIN * (25e3 / 30.067e3);
-assign s4s = _S4SIN * (25e3 / 25.490e3);
+// Nominal gains taken from PS-200743
+assign s1s = _S1SIN * 0.195000; // (25e3 / 128.146e3);
+assign s2s = _S2SIN * 0.555200; // (25e3 / 44.999e3);
+assign s3s = _S3SIN * 0.830970; // (25e3 / 30.067e3);
+assign s4s = _S4SIN * 0.980160; // (25e3 / 25.490e3);
 
-assign s1c = _S1COS * (25e3 / 25.490e3);
-assign s2c = _S2COS * (25e3 / 30.067e3);
-assign s3c = _S3COS * (25e3 / 44.999e3);
-assign s4c = _S4COS * (25e3 / 128.146e3);
+assign s1c = _S1COS * 0.980160; // (25e3 / 25.490e3);
+assign s2c = _S2COS * 0.830970; // (25e3 / 30.067e3);
+assign s3c = _S3COS * 0.555200; // (25e3 / 44.999e3);
+assign s4c = _S4COS * 0.195000; // (25e3 / 128.146e3);
 
 assign a5 = -(s1s + s2s + s3s + s4s + s14);
 assign a6 = -(s1c + s2c + s3c + s4c + s11);
@@ -102,24 +103,23 @@ assign a6 = -(s1c + s2c + s3c + s4c + s11);
 real s11r;
 real s14r;
 always @(posedge clk) begin
-    s11r <= _D11 ? 0.0 : a5;
-    s14r <= ~_D11 ? 0.0 : a6; // Actually controlled by _D14
+    s11r <= _D11 ? 0.0 : a5 * (0.830500 / 0.830970);
+    s14r <= ~_D11 ? 0.0 : a6 * (0.830500 / 0.830970); // Actually controlled by _D14
 end
 assign s11 = s11r;
 assign s14 = s14r;
 `else
-assign s11 = _D11 ? 0.0 : a5;
-assign s14 = ~_D11 ? 0.0 : a6; // Actually controlled by _D14
+assign s11 =  _D11 ? 0.0 : a5 * (0.830500 / 0.830970);
+assign s14 = ~_D11 ? 0.0 : a6 * (0.830500 / 0.830970); // Actually controlled by _D14
 `endif
 
 assign _1125A = _D9  ? 0.0 : a5;
 assign _S10   = _D10 ? 0.0 : a5;
-assign _BIASA = _S10 * (62/(10e3 + 62));
+assign _BIASA = _S10 * (0.005200 / 0.830970); // (62/(10e3 + 62));
 
 assign _1125B = _D12 ? 0.0 : a6;
 assign _S13   = _D13 ? 0.0 : a6;
-assign _BIASB = _S13 * (62/(10e3 + 62));
+assign _BIASB = _S13 * (0.005200 / 0.830970); // (62/(10e3 + 62));
 
 endmodule
 `default_nettype wire
-

@@ -29,12 +29,12 @@ module coarse(
 /*-----------------------------------------------------------------------------.
 | Input Transformers                                                           |
 '-----------------------------------------------------------------------------*/
-wire real sin_4vrms;
-wire real cos_4vrms;
-wire real ref_4vrms;
-assign sin_4vrms = (4.0/26.0) * _CSINH;
-assign cos_4vrms = (4.0/26.0) * _CCOSH;
-assign ref_4vrms = (4.0/28.0) * _28RFH;
+// wire real sin_4vrms;
+// wire real cos_4vrms;
+// wire real ref_4vrms;
+// assign sin_4vrms = (4.0/26.0) * _CSINH;
+// assign cos_4vrms = (4.0/26.0) * _CCOSH;
+// assign ref_4vrms = (4.0/28.0) * _28RFH;
 
 /*-----------------------------------------------------------------------------.
 | Switches                                                                     |
@@ -52,18 +52,19 @@ wire real s10;
 wire real s11;
 wire real s12;
 
-assign s1  = _DC1  ? 0.0 : -sin_4vrms * (25e3 /  27.06e3);
-assign s2  = _DC2  ? 0.0 : -sin_4vrms * (25e3 /  65.33e3);
-assign s3  = _DC3  ? 0.0 :  sin_4vrms * (25e3 /  27.06e3);
-assign s4  = _DC4  ? 0.0 :  sin_4vrms * (25e3 /  65.33e3);
-assign s5  = _DC5  ? 0.0 : -cos_4vrms * (25e3 /  65.33e3);
-assign s6  = _DC6  ? 0.0 : -cos_4vrms * (25e3 /  27.06e3);
-assign s7  = _DC7  ? 0.0 :  cos_4vrms * (25e3 /  65.33e3);
-assign s8  = _DC8  ? 0.0 :  cos_4vrms * (25e3 /  27.06e3);
-assign s9  = _DC9  ? 0.0 :  ref_4vrms * (25e3 /  65.33e3);
-assign s10 = _DC10 ? 0.0 : -ref_4vrms * (25e3 / 128.15e3);
-assign s11 = _DC11 ? 0.0 : -ref_4vrms * (25e3 / 100e3) * (2.6e3/(4.0e3 + 2.6e3));
-assign s12 = _DC12 ? 0.0 : -ref_4vrms * (25e3 / 100e3) * (2.0e3/(8.0e3 + 2.0e3));
+// Nominal gains taken from PS-2007236
+assign s1  = _DC1  ? 0.0 : -0.1410 * _CSINH; // -sin_4vrms * (25e3 /  27.06e3);
+assign s2  = _DC2  ? 0.0 : -0.0586 * _CSINH; // -sin_4vrms * (25e3 /  65.33e3);
+assign s3  = _DC3  ? 0.0 :  0.1410 * _CSINH; //  sin_4vrms * (25e3 /  27.06e3);
+assign s4  = _DC4  ? 0.0 :  0.0586 * _CSINH; //  sin_4vrms * (25e3 /  65.33e3);
+assign s5  = _DC5  ? 0.0 : -0.0586 * _CCOSH; // -cos_4vrms * (25e3 /  65.33e3);
+assign s6  = _DC6  ? 0.0 : -0.1410 * _CCOSH; // -cos_4vrms * (25e3 /  27.06e3);
+assign s7  = _DC7  ? 0.0 :  0.0586 * _CCOSH; //  cos_4vrms * (25e3 /  65.33e3);
+assign s8  = _DC8  ? 0.0 :  0.1410 * _CCOSH; //  cos_4vrms * (25e3 /  27.06e3);
+assign s9  = _DC9  ? 0.0 :  0.0545 * _28RFH; //  ref_4vrms * (25e3 /  65.33e3);
+assign s10 = _DC10 ? 0.0 : -0.0276 * _28RFH; // -ref_4vrms * (25e3 / 128.15e3);
+assign s11 = _DC11 ? 0.0 : -0.0141 * _28RFH; // -ref_4vrms * (25e3 / 100e3) * (2.6e3/(4.0e3 + 2.6e3));
+assign s12 = _DC12 ? 0.0 : -0.0071 * _28RFH; // -ref_4vrms * (25e3 / 100e3) * (2.0e3/(8.0e3 + 2.0e3));
 
 /*-----------------------------------------------------------------------------.
 | Summing amplifier                                                            |
@@ -75,12 +76,17 @@ assign _TPCA = sum;
 /*-----------------------------------------------------------------------------.
 | Schmitt Trigger                                                              |
 '-----------------------------------------------------------------------------*/
-schmitt #(0.4833*$sqrt(2), 0.325) coarse_ternary(_TLC1H, sum);
+wire real tlc_div;
+assign tlc_div = sum * (1e3/(5.1e3 + 1e3));
+schmitt coarse_ternary(_TLC1H, tlc_div);
 
 /*-----------------------------------------------------------------------------.
 | Ambiguity Detect                                                             |
 '-----------------------------------------------------------------------------*/
-assign _ADHI = (_CCOSH >= 21.25*$sqrt(2));
+wire real amb_div;
+real rth = 1/((1/68e3) + (1/56e3));
+assign amb_div = _CCOSH * (rth/(rth + 150e3)) * (1e3/(1e3+27e3));
+schmitt ambiguity_detect(_ADHI, amb_div);
 
 endmodule
 `default_nettype wire
