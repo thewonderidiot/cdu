@@ -8,17 +8,28 @@ This repository contains documentation for, simulations of, and boards for power
 
 ### Connector Plate
 
+<img width="1178" height="832" alt="image" src="https://github.com/user-attachments/assets/fee5a837-d1a2-4c4b-9617-24f24869a177" />
+
+
 The main connector of the CDU consists of 300 Malco Mini-Wasp contacts -- not easy to interface with. The connector plate uses Samtec replica contacts to break this connector out into several D-Sub connectors and a bank of test points, enabling much easier interfacing. Each of the five dual resolvers, the Apollo Guidance Computer (AGC), and the Power & Servo Assembly (PSA) get their own dedicated connector. The remaining spacecraft-interfacing signals are placed on one additional connector.
 
 ### Resolver Adapter
+
+<img width="1302" height="915" alt="image" src="https://github.com/user-attachments/assets/5c3afdaf-6d0a-4db3-8a9f-e0808f5319b2" />
 
 The resolver used for Apollo is unfortunately essentially unobtainable. It was a dual-speed 1x / 16x resolver driven by 28Vrms at 800Hz. The 1X outputs had amplitudes of approximately 26Vrms, and the 16X outputs had amplitudes of around 5Vrms. Lacking such a resolver, I've cobbled together substitues using modern single-speed resolvers geared together with a 16:1 planetary gearbox, at the cost of some backlash between the speeds. The resolver adapter board connects these two single-speed resolvers to the dual-resolver connectors of the connector plate. It contains compensation capacitors for each resolver, as well as series potentiometers on the reference inputs to fine-tune output amplitudes.
 
 ### AGC Simulator
 
+<img width="1081" height="729" alt="image" src="https://github.com/user-attachments/assets/873bcd01-e9ad-4095-949e-b211bed80556" />
+
+
 The AGC Simulator contains headers for a [cmod_agc], and adds to it all of the [I/O circuits](https://www.ibiblio.org/apollo/klabs/history/agc_schematics_block2/top_level/a27-a29-1.jpg) required to fully drive the CDU and the PSA.
 
 ### Power Supply
+
+<img width="954" height="871" alt="image" src="https://github.com/user-attachments/assets/5b8cf1a1-48df-4f88-8993-867effa8d53b" />
+
 
 The power supply, given 28VDC power in and synchronization signals from the AGC simulator, generates the 28Vrms @ 800Hz and 5Vrms @ 800Hz needed to power the resolvers and the CDU. A second nearly identical power supply chain generates the 15Vrms @ 800Hz representing the ATCA reference. It also incorporates a copy of the PSA's relay logic for startup and mode switching of the CDU. Lastly, it contains some switches from the Lunar Module's control panels relevant to CDU operation, including the fateful Rendezvous Radar mode switch.
 
